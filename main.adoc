@@ -1,0 +1,39 @@
+:title: Roborace Requirements
+:project: Roborace
+:version: 1.1
+:author: Maria Naumcheva
+:email: m.naumcheva@innopolis.university
+:organization: Innopolis University, Innopolis, Russia
+:icons: font
+//--------------------------- PDF version
+:doctype: book
+
+
+= {title}
+{author},{email}
+{version} -- {localdate}
+
+//--------------------------- Glossary & Definitions
+// URLS
+:SRSGit: https://github.com/FormalRequirements/roboraceRequirements
+// ICONS
+:check: icon:check-circle[]
+:bug: icon:bug[]
+:missing: icon:times-circle[]
+
+
+
+
+
+
+include::changelog.adoc[]
+
+include::goals.adoc[]
+
+include::environment.adoc[]
+
+include::project.adoc[]
+
+include::system.adoc[]
+
+
