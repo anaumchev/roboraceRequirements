@@ -1,0 +1,65 @@
+
+== System
+
+=== S.1 List of components
+The software includes the following modules:
+
+. Perception module
+. Mapping and localization
+. Planning	
+. Control
+
+=== S.2 Provided functionality
+
+The system shall generate 2D and 3D map of a racetrack
+
+The system shall provide the position and orientation of the AV
+
+The system shall calculate the racing line (path and velocity) for a given track
+
+The system shall find the fastest overtaking maneuver for the car (local path and velocity)
+
+The system shall generate the control commands 
+
+The system shall detect and localize obstacles and another vehicles
+
+The system shall provide object tracking and path prediction
+
+The system shall perform road segmentation: detect drivable space, road defects
+
+=== S.3 Provided interfaces
+
+* Data input from the sensors
+** Exchanged data
+
+* Race control unit
+
+* Safety module
+
+=== S.4 Example scenarios
+
+.General scenarios
+
+* Avoid_obstacle_or_stop
+* Move_to_the_pitlane
+* From_start_to_finish_line
+* …
+
+.Components-specific scenarios
+
+. Perception module
+** scenario 1
+
+. Mapping and localization
+
+. Planning
+	
+. Control
+
+
+=== S.5 Prioritization
+At this stage no prioritization is defined.
+
+=== S.6 Verification and acceptance criteria
+At this stage no prioritization is defined.
+

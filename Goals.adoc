@@ -1,0 +1,103 @@
+//------------------------------------
+// GOALS book
+//
+// Template for requirement:
+//[[gx-keyword]] 
+//`{counter:goals}`
+// Requirement
+
+// {missing} [Corresponding Artifact]
+//------------------------------------
+
+== Goals
+
+=== G.1 Overall context and goals
+Roborace is a global championship between autonomous cars, that allows testing driverless technology in the extreme conditions of competition. The participating teams get access to a racecar called Robocar and simulation facilities and have to develop the software to drive a Robocar in racing conditions. The teams are not allowed to modify the hardware.
+
+The Roborace provides facilities for driverless technology development and testing. The SIT team aims to use this opportunity to develop software that can be licenced and sold.
+
+The current project focuses on developing the software for Robocar.
+
+=== G.2 Current situation
+The hardware is developed and maintained by Roborace. The vehicle is fully ready for autonomous racing and technical specification is provided to the SIT team. 
+
+.[To clarify in the next sprint: 
+* What particular information about a racetrack is provided by Roborace
+* What software is provided by the Roborace team]
+
+=== G.3 Expected benefits 
+
+Promotion of SIT as the pioneer of driverless racing.
+
+Revenue from the sales of the developed software.
+
+=== G.4 System overview
+
+
+
+=== G.5 Limitations and exclusions 
+
+
+//----------------------------------------------
+.SWOT analysis
+[cols="2,2",,]
+|===
+| *Strengths* | *Opportunities* 
+//----------------------------------------------
+| Team’s experience in driverless vehicles software research | Develop driverless vehicle software without a need to develop and maintain hardware 
+|  |Promote SIT as Roborace attracts public attention
+| *Weaknesses* | *Threats*
+|  |Dependance on Roborace as they define the race goals and provide testing facilities
+|  |Traveling restrictions due to Coronavirus outbreak, resulting in remote collaboration within the team
+|=== 
+//----------------------------------------------
+
+Risks:
+
+* Missing data regarding vehicle’s pose
+* Losing vehicle’s control
+* Collision with another vehicle
+* Collision with an obstacle
+* Driving off the track (all 4 wheels outside of the track)
+* Driving off the track partially (3 or less wheels outside of the track)
+
+
+Risk consequences:
+
+* Not finishing the race
+* Light damage of the ego vehicle
+* Severe damage of the ego vehicle
+* Severe damage of another robocar
+
+=== G.6 Stakeholders
+
+Here is a non-exhaustive list of the stakeholders.
+
+//----------------------------------------------
+.Target side stakeholders
+[cols="1,1,3",,options="header"]
+|===
+| Stakeholder | Category | Comment 
+//----------------------------------------------
+| AV operators | User | 
+|  | Subject-Matter Expert | 
+| SIT Legal department | Legal | Intellectual property issues should be addressed|  | Subject-Matter Expert | 
+| Project Manager  | Decision maker | 
+| SIT Roborace project team | Testers, Documenters, Developers | 
+|  | Trainers | For now there are no trainers, but potentially training will be required for the new system’s users
+| Roborace management |  | As the people who “set the rules of the game”: racing goals and conditions; access to the testing facilities; information disclosure rules
+| Roborace system engineers |  | As the people responsible for the hardware
+|  |  | 
+
+|=== 
+//----------------------------------------------
+
+=== G.7 Requirements sources
+
+* Articles in the field of autonomous driving, and in particular those that refer to the Roborace championship
+* News articles, press releases related to the Roborace
+* Books on autonomous driving
+* Regulatory documents on autonomous driving (for example, ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality)
+* Hardware specification documents
+* Project stakeholders
+
