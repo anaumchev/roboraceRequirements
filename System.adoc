@@ -11,21 +11,21 @@ The software includes the following modules:
 
 === S.2 Provided functionality
 
-The system shall generate 2D and 3D map of a racetrack
+The system shall generate 2D and 3D map of a racetrack [Mapping and localization]
 
-The system shall provide the position and orientation of the AV
+The system shall provide the position and orientation of the AV [Mapping and localization]
 
-The system shall calculate the racing line (path and velocity) for a given track
+The system shall calculate the racing line (path and velocity) for a given track [Planning]
 
-The system shall find the fastest overtaking maneuver for the car (local path and velocity)
+The system shall find the fastest overtaking maneuver for the car (local path and velocity) [Planning]
 
-The system shall generate the control commands 
+The system shall generate the control commands [Control]
 
-The system shall detect and localize obstacles and another vehicles
+The system shall detect and localize obstacles and another vehicles [Perception]
 
-The system shall provide object tracking and path prediction
+The system shall provide object tracking and path prediction [Perception]
 
-The system shall perform road segmentation: detect drivable space, road defects
+The system shall perform road segmentation: detect drivable space, road defects [Mapping and localization]
 
 === S.3 Provided interfaces
 
@@ -38,28 +38,19 @@ The system shall perform road segmentation: detect drivable space, road defects
 
 === S.4 Example scenarios
 
-.General scenarios
 
-* Avoid_obstacle_or_stop
-* Move_to_the_pitlane
-* From_start_to_finish_line
-* …
-
-.Components-specific scenarios
-
-. Perception module
-** scenario 1
-
-. Mapping and localization
-
-. Planning
-	
-. Control
+* Avoid_obstacle_or_stop [stop in front of the obstacle, or if not feasible - pass by]
+* Move_to_the_pitlane [upon request]
+* Race_no_obstacles [demonstrate fastest lap]
+* Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
+* Race_with_dynamic_obstacles
+* Race_with_overtaking
+* Emergency_stop [upon request]
 
 
 === S.5 Prioritization
 At this stage no prioritization is defined.
 
 === S.6 Verification and acceptance criteria
-At this stage no prioritization is defined.
+At this stage is not defined.
 
