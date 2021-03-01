@@ -83,6 +83,8 @@
 
 ** Race engineers
 
+* Vehicle operator
+
 
 === E.3 Constraints
 [BR] A car starts a race positioned at the starting line of the racetrack.
