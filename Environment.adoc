@@ -91,6 +91,8 @@
 
 [BR] If there is no wheel slipping, a car is moving towards its heading direction
 
+[BR] A car shall not accelerate and brake at the same moment
+
 === E.4 Assumptions
 The robocar and Devbot 2.0 have the same dynamics
 
