@@ -27,12 +27,21 @@ The system shall provide object tracking and path prediction [Perception]
 
 The system shall perform road segmentation: detect drivable space, road defects [Mapping and localization]
 
+
+
 === S.3 Provided interfaces
 
 * Data input from the sensors
-** Exchanged data
 
 * Race control unit
+** obstacles location
+** start command
+** stop command
+** allow to turn on AI driver
+** red and green flags
+** safe stop request
+** emergency stop request
+** speed limit
 
 * Safety module
 
@@ -46,11 +55,20 @@ The system shall perform road segmentation: detect drivable space, road defects 
 * Race_with_dynamic_obstacles
 * Race_with_overtaking
 * Emergency_stop [upon request]
+* Safe_stop [upon request]
 
 
 === S.5 Prioritization
 At this stage no prioritization is defined.
 
+
+Priority scenario:
+* Race_no_obstacles [demonstrate fastest lap]
+* Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
+* Emergency_stop [upon request]
+* Safe_stop [upon request]
+
 === S.6 Verification and acceptance criteria
 At this stage is not defined.
 
+  
