@@ -64,8 +64,11 @@ At this stage no prioritization is defined.
 
 Priority scenario:
 * Race_no_obstacles [demonstrate fastest lap]
+
 * Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
+
 * Emergency_stop [upon request]
+
 * Safe_stop [upon request]
 
 === S.6 Verification and acceptance criteria
