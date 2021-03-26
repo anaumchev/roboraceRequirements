@@ -12,10 +12,14 @@ feature
 	obstacles: BAG[OBSTACLE]
 	roborace: ROBORACE
 	racetrack: RACETRACK
+	racemap: MAP
+
+-- sensors
 	lidar1: LIDAR
 	radar1: RADAR
 	gnss: GNSS
 	camera: CAMERA
 	sonar1: SONAR
 	odometer: ODOMETER
+
 end
