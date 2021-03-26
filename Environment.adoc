@@ -85,46 +85,54 @@
 
 * Vehicle operator
 
+* Sensors
+
+** Lidars
+
+** Radars
+
+** Sonars
+
+** Odometet
+
+** GNSS
+
+** Cameras
+
+** IMU
+
 
 === E.3 Constraints
 [BR] A car starts a race positioned at the starting line of the racetrack.
 
 [BR] If there is no wheel slipping, a car is moving towards its heading direction
 
-[BR] A car shall not accelerate and brake at the same moment
+[BR] A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/03/21]
+
+[BR] A car shall not drive on the curbs [source: interview with Ilya 09/03/21]
+
+[BR] A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21]
+
+[BR] The coordinates of obstacles and bonuses are sent in real time during the race  [how much ahead?] [source: interview with Ilya 09/03/21]
 
 === E.4 Assumptions
+The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
+
+The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
+
 The robocar and Devbot 2.0 have the same dynamics
 
 All roborace participants are able to communicate in English
 
-The measured vehicle’s speed equals to actual vehicle’s speed with an accuracy TBD
+The measured vehicle’s speed equals to actual vehicle’s speed [source: interview with Ilya 09/03/21]
 
-[none]
-* (Author: M.Naumcheva
+The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy 5-10cm [source: interview with Ilya 09/03/21]
 
-* Date: Sprint 1, Jan27
+The influence of weather contitions on car dynamics is not taken into consideration and are captured as constraints on car acceleration.
 
-* Resolve by: Sprint 2, Feb 5
+The influence of tyre wear-off on car dynamics is not taken into consideration.
 
-* Importance: serious
-
-* Resources: ask customer)
-
-
-The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy TBD
-
-[none]
-* (Author: M.Naumcheva
-
-* Date: Sprint 1, Jan27
-
-* Resolve by: Sprint 2, Feb 5
-
-* Importance: serious
-
-* Resources: ask customer)
-
+The influence of track surface degradation during the race is not taken into consideration.
 
 The racetrack surface is clean and in good conditions
 
@@ -140,3 +148,4 @@ The racetrack surface is not slippery
 === E.6 Invariants
 
 In a normal mode the vehicles move within the racetrack limits
+In a normal mode the vehicles move in the racing direction
