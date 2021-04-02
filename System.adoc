@@ -57,6 +57,47 @@ The system shall perform road segmentation: detect drivable space, road defects 
 * Emergency_stop [upon request]
 * Safe_stop [upon request]
 
+=== S.4 Use Cases
+
+//----------------------------------------------
+.Use Case 1. Move to the pitlane
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Move_to_the_pitlane 
+| Scope    | System
+| Level| Business summary
+| Primary actor| AV Pilot
+| Secondary actor| 
+| Context of use| AV has to obey an instruction
+| Preconditions| AV has received an order to move to the pitlane
+
+AV is on the racetrack
+
+| Trigger| System receives a request from the team or from the Roborace team
+| Main success scenario| * The system calculates the trajectory to the pitlane
+
+* The AV follows the trajectory
+
+* The AV stops at the pit
+
+| Success guarantee| The AV has moved to the pit and stopped
+| Extensions| A. There is no safe trajectory to enter the pitlane
+
+B. The distance is not sufficient for dropping the speed enough to  enter the pitlane without using the emergency brake
+
+| Stakeholders and interests|
+* AV Pilot 
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
 
 === S.5 Prioritization
 At this stage no prioritization is defined.
