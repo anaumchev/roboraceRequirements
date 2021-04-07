@@ -1,7 +1,8 @@
 note
-	description: "Roborace_spec application root class"
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Roborace_spec root class"
+	author: "Maria Naumcheva"
+	date: "$07/04/2021$"
+	revision: "$07/04/2021$"
 
 class
 	APPLICATION
@@ -17,7 +18,6 @@ feature {NONE} -- Initialization
 	make
 			-- Run application.
 		do
-			--| Add your code here
 			print ("The Roborace Specification")
 		end
 
