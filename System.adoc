@@ -68,14 +68,14 @@ The system shall perform road segmentation: detect drivable space, road defects 
 | Name | Move_to_the_pitlane 
 | Scope    | System
 | Level| Business summary
-| Primary actor| AV Pilot
+| Primary actor| Roborace or AV pilot
 | Secondary actor| 
 | Context of use| AV has to obey an instruction
 | Preconditions| AV has received an order to move to the pitlane
 
 AV is on the racetrack
 
-| Trigger| System receives a request from the team or from the Roborace team
+| Trigger| System receives a request from AV pilot or from the Roborace team
 | Main success scenario| * The system calculates the trajectory to the pitlane
 
 * The AV follows the trajectory
@@ -83,9 +83,73 @@ AV is on the racetrack
 * The AV stops at the pit
 
 | Success guarantee| The AV has moved to the pit and stopped
-| Extensions| A. There is no safe trajectory to enter the pitlane
+| Extensions| A. There is no safe trajectory to enter the pitlane (due to obstacles)
+
+* The system calculates the closest possible trajectory to the pitlane entrance
+
+* The AV follows the trajectory
+
+* The AV stops at the end of the calculated trajectory
 
 B. The distance is not sufficient for dropping the speed enough to  enter the pitlane without using the emergency brake
+
+* The system calculates the trajectory with making an additional race lap before entering the pitlane
+
+* The AV follows the trajectory
+
+* The AV stops at the pit
+
+| Stakeholders and interests|
+* AV Pilot (requests the car to return to pit)
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+
+//----------------------------------------------
+
+.Use Case 2. Single race without obstacles
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Single_race_no_obstacles
+| Scope    | System
+| Level| Business summary
+| Primary actor| AV Pilot
+| Secondary actor| 
+| Context of use| AV has to obey an instruction
+| Preconditions| AV is placed on a starting grid in a racing direction. 
+
+AV is stopped.
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| AV operator runs the single racing scenario
+| Main success scenario|  
+
+* The AV starts moving following the trajectory
+
+* The system calculates the local trajectory during the race
+
+* The AV follows the trajectory
+
+* The AV moves the designated number of laps
+
+* After the AV finishes the last lap it goes to the pit.
+
+| Success guarantee| The AV has finished the race. 
+
+??The AV has moved to the pit and stopped.
+
+| Extensions| A. It is not possible to avoid an obstacle
+
+
 
 | Stakeholders and interests|
 * AV Pilot 
@@ -99,11 +163,106 @@ B. The distance is not sufficient for dropping the speed enough to  enter the pi
 //----------------------------------------------
 
 
+//----------------------------------------------
+
+.Use Case 3. Single race in a metaverse
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Single_race_metaverse 
+| Scope    | System
+| Level| Business summary
+| Primary actor| AV Pilot
+| Secondary actor| 
+| Context of use| AV has to obey an instruction
+| Preconditions| AV is placed on a starting grid in a racing direction. 
+
+AV is stopped.
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| AV operator runs the single racing scenario
+| Main success scenario|  
+
+* The AV starts moving following the trajectory
+
+* The coordinates of the obstacles and bonuses are received from the Roborace in real time when moving
+
+* The system calculates the local trajectory to collect bonuses and avoid obstacles
+
+* The AV follows the trajectory
+
+* The AV moves the designated number of laps
+
+* After the AV finishes the last lap it goes to the pit.
+
+| Success guarantee| The AV has finished the race collecting the highest possible number of bonuses and avoiding all obstacles. 
+
+??The AV has moved to the pit and stopped.
+
+| Extensions| A. It is not possible to avoid an obstacle
+
+
+
+| Stakeholders and interests|
+* AV Pilot 
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+//----------------------------------------------
+
+.Use Case 4. Safe stop
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Safe_stop
+| Scope    | System
+| Level| Business summary
+| Primary actor| AV Pilot or Roborace
+| Secondary actor| 
+| Context of use| AV has to obey an instruction
+| Preconditions| AV is moving on a racetrack. 
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| System receives a request from AV pilot or from the Roborace team
+| Main success scenario|  
+
+* The AV gradually stops following the global trajectory
+
+| Success guarantee| The AV has stopped.
+
+| Extensions| 
+
+
+
+| Stakeholders and interests|
+* AV Pilot (requests the car to stop)
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to stop)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+
+
 === S.5 Prioritization
 At this stage no prioritization is defined.
 
 
 Priority scenario:
+
 * Race_no_obstacles [demonstrate fastest lap]
 
 * Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
