@@ -68,39 +68,39 @@ The system shall perform road segmentation: detect drivable space, road defects 
 | Name | Move_to_the_pitlane 
 | Scope    | System
 | Level| Business summary
-| Primary actor| Roborace or AV pilot
+| Primary actor| Roborace or Racecar pilot
 | Secondary actor| 
-| Context of use| AV has to obey an instruction
-| Preconditions| AV has received an order to move to the pitlane
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar has received an order to move to the pitlane
 
-AV is on the racetrack
+Racecar is on the racetrack
 
-| Trigger| System receives a request from AV pilot or from the Roborace team
+| Trigger| System receives a request from Racecar pilot or from the Roborace team
 | Main success scenario| * The system calculates the trajectory to the pitlane
 
-* The AV follows the trajectory
+* The Racecar follows the trajectory
 
-* The AV stops at the pit
+* The Racecar stops at the pit
 
-| Success guarantee| The AV has moved to the pit and stopped
+| Success guarantee| The Racecar has moved to the pit and stopped
 | Extensions| A. There is no safe trajectory to enter the pitlane (due to obstacles)
 
 * The system calculates the closest possible trajectory to the pitlane entrance
 
-* The AV follows the trajectory
+* The Racecar follows the trajectory
 
-* The AV stops at the end of the calculated trajectory
+* The Racecar stops at the end of the calculated trajectory
 
 B. The distance is not sufficient for dropping the speed enough to  enter the pitlane without using the emergency brake
 
 * The system calculates the trajectory with making an additional race lap before entering the pitlane
 
-* The AV follows the trajectory
+* The Racecar follows the trajectory
 
-* The AV stops at the pit
+* The Racecar stops at the pit
 
 | Stakeholders and interests|
-* AV Pilot (requests the car to return to pit)
+* Racecar Pilot (requests the car to return to pit)
 
 * Roborace management (sets the race goals and policies)
 
@@ -121,38 +121,38 @@ B. The distance is not sufficient for dropping the speed enough to  enter the pi
 | Name | Single_race_no_obstacles
 | Scope    | System
 | Level| Business summary
-| Primary actor| AV Pilot
+| Primary actor| Racecar Pilot
 | Secondary actor| 
-| Context of use| AV has to obey an instruction
-| Preconditions| AV is placed on a starting grid in a racing direction. 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is placed on a starting grid in a racing direction. 
 
-AV is stopped.
+Racecar is stopped.
 
 The global trajectory is calculated ahead of the race.
 
-| Trigger| AV operator runs the single racing scenario
+| Trigger| Racecar operator runs the single racing scenario
 | Main success scenario|  
 
-* The AV starts moving following the trajectory
+* The Racecar starts moving following the trajectory
 
 * The system calculates the local trajectory during the race
 
-* The AV follows the trajectory
+* The Racecar follows the trajectory
 
-* The AV moves the designated number of laps
+* The Racecar moves the designated number of laps
 
-* After the AV finishes the last lap it goes to the pit.
+* After the Racecar finishes the last lap it goes to the pit.
 
-| Success guarantee| The AV has finished the race. 
+| Success guarantee| The Racecar has finished the race. 
 
-??The AV has moved to the pit and stopped.
+??The Racecar has moved to the pit and stopped.
 
 | Extensions| A. It is not possible to avoid an obstacle
 
 
 
 | Stakeholders and interests|
-* AV Pilot 
+* Racecar Pilot 
 
 * Roborace management (sets the race goals and policies)
 
@@ -173,40 +173,42 @@ The global trajectory is calculated ahead of the race.
 | Name | Single_race_metaverse 
 | Scope    | System
 | Level| Business summary
-| Primary actor| AV Pilot
+| Primary actor| Racecar Pilot
 | Secondary actor| 
-| Context of use| AV has to obey an instruction
-| Preconditions| AV is placed on a starting grid in a racing direction. 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is placed on a starting grid in a racing direction. 
 
-AV is stopped.
+Racecar is stopped.
 
 The global trajectory is calculated ahead of the race.
 
-| Trigger| AV operator runs the single racing scenario
+| Trigger| Racecar operator runs the single racing scenario
 | Main success scenario|  
 
-* The AV starts moving following the trajectory
+* The Racecar starts moving following the trajectory
 
 * The coordinates of the obstacles and bonuses are received from the Roborace in real time when moving
 
 * The system calculates the local trajectory to collect bonuses and avoid obstacles
 
-* The AV follows the trajectory
+* The Racecar follows the trajectory
 
-* The AV moves the designated number of laps
+* The Racecar moves the designated number of laps
 
-* After the AV finishes the last lap it goes to the pit.
+* After the Racecar finishes the last lap it goes to the pit.
 
-| Success guarantee| The AV has finished the race collecting the highest possible number of bonuses and avoiding all obstacles. 
+| Success guarantee| The Racecar has finished the race collecting the highest possible number of bonuses and avoiding all obstacles. 
 
-??The AV has moved to the pit and stopped.
+??The Racecar has moved to the pit and stopped.
 
 | Extensions| A. It is not possible to avoid an obstacle
 
+B. It is not possible to collect all visible bonuses
 
+C. To collect a bonus a vehicle has to hit the obstacle
 
 | Stakeholders and interests|
-* AV Pilot 
+* Racecar Pilot 
 
 * Roborace management (sets the race goals and policies)
 
@@ -226,26 +228,26 @@ The global trajectory is calculated ahead of the race.
 | Name | Safe_stop
 | Scope    | System
 | Level| Business summary
-| Primary actor| AV Pilot or Roborace
+| Primary actor| Racecar Pilot or Roborace
 | Secondary actor| 
-| Context of use| AV has to obey an instruction
-| Preconditions| AV is moving on a racetrack. 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is moving on a racetrack. 
 
 The global trajectory is calculated ahead of the race.
 
-| Trigger| System receives a request from AV pilot or from the Roborace team
+| Trigger| System receives a request from Racecar pilot or from the Roborace team
 | Main success scenario|  
 
-* The AV gradually stops following the global trajectory
+* The Racecar gradually stops following the global trajectory
 
-| Success guarantee| The AV has stopped.
+| Success guarantee| The Racecar has stopped.
 
 | Extensions| 
 
 
 
 | Stakeholders and interests|
-* AV Pilot (requests the car to stop)
+* Racecar Pilot (requests the car to stop)
 
 * Roborace management (sets the race goals and policies)
 
