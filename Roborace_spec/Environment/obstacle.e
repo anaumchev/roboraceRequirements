@@ -11,6 +11,10 @@ feature
 	type: STRING
 		-- Obstacle type
 
-	location: BAG [LOCATION]
+	location: LOCATION
 		-- Obstacle location
+
+	size: TUPLE[REAL, REAL, REAL]
+		-- Obstacle size (bounding box)
+		
 end

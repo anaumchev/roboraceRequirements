@@ -11,6 +11,7 @@ inherit
 	OBSTACLE
 
 feature
+
 	speed: REAL
 		-- Current speed
 

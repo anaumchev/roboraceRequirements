@@ -20,6 +20,10 @@
 		</capability>
 		<precompile name="base_pre" location="$ISE_PRECOMP\base-scoop-safe.ecf"/>
 		<library name="base" location="$ISE_LIBRARY\library\base\base.ecf"/>
-		<cluster name="roborace_spec" location=".\" recursive="true"/>
+		<cluster name="roborace_spec" location=".\" recursive="true">
+			<file_rule>
+				<exclude>^System/use_cases$</exclude>
+			</file_rule>
+		</cluster>
 	</target>
 </system>

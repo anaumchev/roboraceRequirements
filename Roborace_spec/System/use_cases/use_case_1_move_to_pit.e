@@ -1,6 +1,6 @@
 note
 	description: "Summary description for {USE_CASE_1_MOVE_TO_PIT}."
-	author: ""
+	author: "Maria Naumcheva"
 	date: "$21/04/2021$"
 	revision: "$21/04/2021$"
 
@@ -55,7 +55,7 @@ feature
 		end
 
 	alternative_flow1
-			--There is unsurmountableobstacle on the way to pit
+			--There is unsurmountable obstacle on the way to pit
 		require
 			car_on_racetrack: car.is_on_racetrack
 			car.unsurmountable_obstacle_detected

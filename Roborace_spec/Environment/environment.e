@@ -4,6 +4,7 @@ note
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
 	revision: "$07/04/2021$"
+	EIS: "name=Project Requirement", "protocol=URI", "src=/home/mnaumcheva/Roborace/roboraceRequirements/main.pdf", "tag=requirement", "nameddest=4.1"
 
 deferred class
 	ENVIRONMENT
@@ -17,5 +18,8 @@ feature
 
 	racemap: MAP
 		-- Racetrack map
+
+	racerules: RULES
+		-- Current race rules
 
 end

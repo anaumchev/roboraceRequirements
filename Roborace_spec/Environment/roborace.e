@@ -7,4 +7,6 @@ note
 deferred class
 	ROBORACE
 
+feature
+
 end
