@@ -1,0 +1,157 @@
+//------------------------------------
+// ENVIRONMENT book
+//
+// Template for requirement:
+//[[ex-keyword]] 
+//`{counter:environment}`
+// Requirement
+
+// {missing} [Corresponding Artifact]
+//------------------------------------
+== Environment
+
+=== E.1 Glossary
+
+
+[[ECU]]
+{Electronic control unit (ECU)}:: An embedded unit in the vehicle that controls one or more electrical systems, such as the engine control unit or the human-machine interface.  
+
+[[Race_control_unit]]
+{Race control unit}:: Roborace representatives who are responsible for monitoring and supervising the practice sessions, the qualifying sessions and the race itself.
+
+[[Curb]]
+{Curb}:: Flat curbstones lining the corners or chicanes of racing tracks. They are often painted red and white, and are intended to prevent unauthorized short-cuts and keep the racers safely on the track.
+
+[[Obstacle]]
+{Obstacle}:: Any physical or virtual object on a racetrack apart from the ego vehicle
+
+[[Inside_Outside_lines]]
+{Inside line, outside line}:: White lines on the sides of a race track, defining a drivable area
+
+[[Drivable_area]]
+{Drivable area}:: Safe for driving area of a race track, bounded by Inside line and Outside line.
+
+[[The pits]]
+{Pit}:: An area of a racetrack where teams' garages are situated and pit stops are conducted.
+
+[[Pit lane]]
+{Pit lane}:: A lane, adjacent to a racetrack, which connects the racetrack with the pits.
+
+[[Pit stop]]
+{Pit stop}:: A pause for recharging, new tyres, repairs, mechanical adjustments, as a penalty, or any combination of the above
+
+[[Racetrack]]
+{Racetrack}:: A circular road with a hard surface built for racing of the vehicles
+
+[[DNF]]
+{DNF}:: Did Not Finish. A run is scored as a DNF when a portion of the course was not completed or when a car fails on course.
+
+[[Ego_vehicle]]
+{Ego vehicle}:: The vehicle, the behaviour of which is of primary interest.
+
+[[System]]
+{System}:: .
+
+
+=== E.2 Components
+
+* Racetrack
+
+** Surface
+ 	
+** Inside line, outside line
+ 	
+** starting line
+
+** traffic signs (if any)
+
+** curbs 
+
+** landmarks
+
+* Vehicles
+
+* Obstacles
+
+* Surroundings, spectators
+
+* Weather conditions
+
+** Wind
+
+** Light conditions
+
+** Precipitation
+
+* Race control unit 
+
+** Telemetry system
+
+** Race engineers
+
+* Vehicle operator
+
+* Sensors
+
+** Lidars
+
+** Radars
+
+** Sonars
+
+** Odometet
+
+** GNSS
+
+** Cameras
+
+** IMU
+
+
+=== E.3 Constraints
+[BR] A car starts a race positioned at the starting line of the racetrack.
+
+[BR] If there is no wheel slipping, a car is moving towards its heading direction
+
+[BR] A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/03/21]
+
+[BR] A car shall not drive on the curbs [source: interview with Ilya 09/03/21]
+
+[BR] A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21]
+
+[BR] The coordinates of obstacles and bonuses are sent in real time during the race  [how much ahead?] [source: interview with Ilya 09/03/21]
+
+=== E.4 Assumptions
+The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
+
+The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
+
+The robocar and Devbot 2.0 have the same dynamics
+
+All roborace participants are able to communicate in English
+
+The measured vehicle’s speed equals to actual vehicle’s speed [source: interview with Ilya 09/03/21]
+
+The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy 5-10cm [source: interview with Ilya 09/03/21]
+
+The influence of weather contitions on car dynamics is not taken into consideration and are captured as constraints on car acceleration.
+
+The influence of tyre wear-off on car dynamics is not taken into consideration.
+
+The influence of track surface degradation during the race is not taken into consideration.
+
+The racetrack surface is clean and in good conditions
+
+The racetrack surface is not slippery
+
+=== E.5 Effects
+
+* As the Roborace is initially created as a self-driving cars competition, the software implementation should not have any effects on the environment
+* Currently the software is checked by the Roborace team before each competition. When the system is fully implemented, this process might change.
+* The implementation of fully autonomous racing vehicles will lead to a redesign of the racing championship, as the racers' personalities play an important role in it. These changes are out of scope of the RMPS project.
+
+
+=== E.6 Invariants
+
+In a normal mode the vehicles move within the racetrack limits
+In a normal mode the vehicles move in the racing direction
