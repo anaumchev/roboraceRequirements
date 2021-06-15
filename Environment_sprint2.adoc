@@ -35,13 +35,13 @@ In the second iteration we refine the information and build the environment mode
 [[Drivable_area]]
 {Drivable area}:: Safe for driving area of a race track, bounded by Inside line and Outside line.
 
-[[The pits]]
+[[The_pits]]
 {Pit}:: An area of a racetrack where teams' garages are situated and pit stops are conducted.
 
-[[Pit lane]]
+[[Pit_lane]]
 {Pit lane}:: A lane, adjacent to a racetrack, which connects the racetrack with the pits.
 
-[[Pit stop]]
+[[Pit_stop]]
 {Pit stop}:: A pause for recharging, new tyres, repairs, mechanical adjustments, as a penalty, or any combination of the above
 
 [[Racetrack]]
@@ -162,4 +162,5 @@ The racetrack surface is not slippery
 === E.6 Invariants
 
 In a normal mode the vehicles move within the racetrack limits
+
 In a normal mode the vehicles move in the racing direction
