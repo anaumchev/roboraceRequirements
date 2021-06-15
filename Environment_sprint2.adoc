@@ -63,6 +63,33 @@ Racetrack::
 
 We model the racetrack as the sequence of coordinate tuples [(x1, y1), (x2, y2)] , which represent the coordinates of the points on the inside and outside line along the track. The first element of the sequence corresponds to the starting line. Note, that representing coordinates on a 2D plane we implicitely assume that the track is completely flat (which generally might not be true). We reflect this in the assumptions section.
 
+deferred class
+	RACETRACK
+
+feature
+
+	map: MAP
+			-- Coordinates of the bounding lines
+
+	starting_line: TUPLE [LOCATION, LOCATION]
+			-- Coordinates of the crossings of starting line with track bounding lines
+
+	starting_grid: ARRAY [LOCATION]
+			-- Coordinates of the middles of the front lines of the starting grid positions
+			-- n-th element corresponds to n-th starting position.
+
+end
+
+deferred class
+	RACETRACK_MAP
+
+feature
+
+	track_borders: SEQUENCE [TUPLE [LOCATION, LOCATION]]
+			-- Coordinates of the bounding lines of racetrack
+
+end
+
 The starting grid is modeled as an array of coordinates of the middles of the front lines of the starting grid positions. The n-th element of the array corresponds to the n'th place on the starting grid.
 
 As the initial phases of the development focus on the key features of the software, some environment details are ignored (which should be reflected in the assumptions section). We assume that the track surface is flat, clean, in good conditions, with no potholes and not slippery. The impact of the racetrack surface conditions can be introduced later in the development. 
