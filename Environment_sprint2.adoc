@@ -73,10 +73,9 @@ As the localization information is provided by the Roborace, we do not consider 
 
 At the current stage of the Roborace championship driving on curbs is not allowed. As the curbs are located outside of a racetrack (behind the inside or outside line), we ignore their existence.
 
-Vehicles :: Othe race cars can be modeled as the instances of a RACECAR
+Vehicles :: Competing race cars can be modeled as the instances of a RACECAR
 
-Obstacles ::
-
+Obstacles :: The obstacles can be of a different nature: real and virtual, dynamic and static. Virtual obstacles are introduced by the Roborace team during the race. If the car hits the virtual obstacles it is ot damaged; yet the bonus or penalty time will be added to a total race time. Real obstacles currently are not present, yet there might be an unexpected obstacle on a racetrack (such as a stray dog or some object bought by the wind. We capture the commonality of the different obstacle types through inheritance mechanism.
 
 Surroundings, spectators :: We ignore the surrondingd and spectators 
 
@@ -88,11 +87,11 @@ Telemetry system is the system that monitors current parameters of the race car.
 
 Race engineers take care of the hardware, which we ignore. Race engineers also check the software before the race which should be taken into account in the project development planning.
 
-Race rules evolve through the championship so the model should support the change
+Race rules evolve through the championship so the model should support the change.
 
 Vehicle operator :: The vehicle operator runs the software to start the race. He can also request a safe or emergency stop during the race. The corresponding interface should be developed.
 
-Sensors ::
+Sensors :: We capture the commonalities between different types of sensors through the inheritance mechanism. 
 
 ** Lidars
 
