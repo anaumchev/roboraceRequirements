@@ -10,6 +10,10 @@
 //------------------------------------
 == Environment
 
+=== Explanatory text
+In the second iteration we refine the information and build the environment model, using the programming language. During modelling we identify implicit assumptions which should be carefully listed and further verified with the stakeholders.
+
+
 === E.1 Glossary
 
 
@@ -89,6 +93,8 @@
 
 ** Race engineers
 
+** Race rules
+
 * Vehicle operator
 
 * Sensors
@@ -99,13 +105,15 @@
 
 ** Sonars
 
-** Odometet
+** Odometer
 
 ** GNSS
 
 ** Cameras
 
 ** IMU
+
+** OSS
 
 
 === E.3 Constraints
