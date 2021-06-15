@@ -59,9 +59,9 @@ In the second iteration we refine the information and build the environment mode
 
 === E.2 Components
 
-====Racetrack 
+Racetrack:: 
 
-We model the racetrack as the sequence of tuples ((x1, y1), (x2, y2)) , which represent the coordinates of the points on the inside and outside line along the track. The first element of the sequence corresponds to the starting line. Note, that representing coordinates on a 2D plane we implicitely assume that the track is completely flat (which generally might not be true). We reflect this in the assumptions section.
+We model the racetrack as the sequence of coordinate tuples [(x1, y1), (x2, y2)] , which represent the coordinates of the points on the inside and outside line along the track. The first element of the sequence corresponds to the starting line. Note, that representing coordinates on a 2D plane we implicitely assume that the track is completely flat (which generally might not be true). We reflect this in the assumptions section.
 
 The starting grid is modeled as an array of coordinates of the middles of the front lines of the starting grid positions. The n-th element of the array corresponds to the n'th place on the starting grid.
 
@@ -73,49 +73,26 @@ As the localization information is provided by the Roborace, we do not consider 
 
 At the current stage of the Roborace championship driving on curbs is not allowed. As the curbs are located outside of a racetrack (behind the inside or outside line), we ignore their existence.
 
+Vehicles :: Othe race cars can be modeled as the instances of a RACECAR
+
+Obstacles ::
 
 
-* Racetrack
+Surroundings, spectators :: We ignore the surrondingd and spectators 
 
-** Surface
- 	
-** Inside line, outside line
- 	
-** starting line
+Weather conditions :: We ignore the weather conditions at the moment. 
 
-** starting grid
+Race control unit :: 
 
-** traffic signs (if any)
+Telemetry system is the system that monitors current parameters of the race car. The developed software shall support the corresponding interface.
 
-** curbs 
+Race engineers take care of the hardware, which we ignore. Race engineers also check the software before the race which should be taken into account in the project development planning.
 
-** landmarks
+Race rules evolve through the championship so the model should support the change
 
-* Vehicles
+Vehicle operator :: The vehicle operator runs the software to start the race. He can also request a safe or emergency stop during the race. The corresponding interface should be developed.
 
-* Obstacles
-
-* Surroundings, spectators
-
-* Weather conditions
-
-** Wind
-
-** Light conditions
-
-** Precipitation
-
-* Race control unit 
-
-** Telemetry system
-
-** Race engineers
-
-** Race rules
-
-* Vehicle operator
-
-* Sensors
+Sensors ::
 
 ** Lidars
 
