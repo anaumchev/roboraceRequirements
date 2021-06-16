@@ -132,6 +132,10 @@ Telemetry system is the system that monitors current parameters of the race car.
 Race engineers take care of the hardware, which we ignore. Race engineers also check the software before the race which should be taken into account in the project development planning.
 
 Race rules evolve through the championship so the model should support the change.
+
+.The `BASIC_RULES` class
+[source, eiffel]
+----
 deferred class
 	BASIC_RULES
 
@@ -146,7 +150,11 @@ feature
 		--Time limit for the racing session (minutes)
 
 end
+----
 
+.The `RULES` class
+[source, eiffel]
+----
 deferred class
 	RULES
 
@@ -173,7 +181,7 @@ feature
 		--Dynamic obstacles size (bounding box)
 
 end
-
+----
 
 
 
