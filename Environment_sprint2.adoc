@@ -233,7 +233,24 @@ To combine all environment properties into one model, we create the ENVIRONMENT 
 .The abstract `ENVIRONMENT` class
 [source, eiffel]
 ----
+deferred class
+	ENVIRONMENT
 
+feature
+	obstacles: BAG[OBSTACLE]
+		--Set of detected obstacles on racetrack
+
+	roborace: ROBORACE
+		--Race control unit
+
+	race: RACE
+		--Current race details
+
+	sensors: SENSORS
+		--Set of sensos insalled of the vehicle
+
+end
+----
 
 === E.3 Constraints
 
