@@ -222,7 +222,7 @@ feature
 	distance: ARRAY2 [REAL]
 		-- m by n matrix of distances to object points
 
-	orientation: ARRAY [ORIENTATION]
+	orientation: ORIENTATION
 		-- Lidar orientation in the racecar coordinate system	
 
 end
@@ -254,7 +254,7 @@ end
 
 === E.3 Constraints
 
-Constraint turn into class invariant as these are the conditions that must hold at all times
+Constraints turn into class invariant as these are the conditions that must hold at all times
 
 [BR] A car starts a race positioned at the starting grid of the racetrack.
 
