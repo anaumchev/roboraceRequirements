@@ -171,13 +171,13 @@ feature
 	penalty_time_moving: INTEGER
 		--Penalty time for hittig a moving obstacle
 
-	static_obstacle_size: TUPLE[REAL, REAL, REAL]
+	static_obstacle_size: TUPLE[REAL, REAL]
 		--Static obstacle size (bounding box)
 
-	static_bonus_obstacle_size: TUPLE[REAL, REAL, REAL]
+	static_bonus_obstacle_size: TUPLE[REAL, REAL]
 		--Static bonus obstacles size (bounding box)
 
-	dynamic_obstacle_size: TUPLE[REAL, REAL, REAL]
+	dynamic_obstacle_size: TUPLE[REAL, REAL]
 		--Dynamic obstacles size (bounding box)
 
 end
@@ -189,25 +189,57 @@ Vehicle operator :: The vehicle operator runs the software to start the race. He
 
 Sensors :: We capture the commonalities between different types of sensors through the inheritance mechanism. 
 
-** Lidars
+.The `SENSOR` class
+[source, eiffel]
+----
+deferred class
+	SENSOR
 
-** Radars
+feature
+	position: LOCATION
+		--location in the racecar coordinate system
 
-** Sonars
+	update_rate: REAL
+		--sensor update rate
+end
+----
 
-** Odometer
+The abstract sensor class reflects the features common to all sensor. The class describing a particular sensor class inherits from a SENSOR class and further soecifies features applicable to that particular sensor type (see the example of the LIDAR class)
 
-** GNSS
+.The abstract `LIDAR` class
+[source, eiffel]
+----
+deferred class
+	LIDAR
 
-** Cameras
+inherit
+	SENSOR
+	
+feature
+	point_cloud: ARRAY2 [LOCATION]
+		-- m by n matrix of detected points in lidar coordinate system
 
-** IMU
+	distance: ARRAY2 [REAL]
+		-- m by n matrix of distances to object points
 
-** OSS
+	orientation: ARRAY [ORIENTATION]
+		-- Lidar orientation in the racecar coordinate system	
+
+end
+----
+
+To combine all environment properties into one model, we create the ENVIRONMENT class which references all environment components:
+
+.The abstract `ENVIRONMENT` class
+[source, eiffel]
+----
 
 
 === E.3 Constraints
-[BR] A car starts a race positioned at the starting line of the racetrack.
+
+Constraint turn into class invariant as these are the conditions that must hold at all times
+
+[BR] A car starts a race positioned at the starting grid of the racetrack.
 
 [BR] If there is no wheel slipping, a car is moving towards its heading direction
 
