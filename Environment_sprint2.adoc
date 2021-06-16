@@ -252,6 +252,28 @@ feature
 end
 ----
 
+Here the Sensors class represents a particular sensors set. As the sensors location on a race car can be changed by the teams, this can be reflected upon creating an instance of SENSORS class and assigning particular location to each sensor.
+
+.The `SENSORS` class
+[source, eiffel]
+----
+deferred class
+	SENSORS
+
+feature
+  -- The set of sensors corresponds to racecar specification
+	lidar1: LIDAR
+	lidar2: LIDAR
+	radar1: RADAR
+	radar2: RADAR
+	gnss: GNSS
+	camera1: CAMERA
+	camera2: CAMERA
+	odometer: ODOMETER
+
+end
+----
+
 === E.3 Constraints
 
 Constraints turn into class invariant as these are the conditions that must hold at all times
