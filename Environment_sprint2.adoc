@@ -16,6 +16,7 @@ In the second iteration we refine the information and build the environment mode
 
 === E.1 Glossary
 
+The new terms enrich the glossary as soon as they appear in requirements specification process.
 
 [[ECU]]
 {Electronic control unit (ECU)}:: An embedded unit in the vehicle that controls one or more electrical systems, such as the engine control unit or the human-machine interface.  
@@ -56,6 +57,20 @@ In the second iteration we refine the information and build the environment mode
 [[System]]
 {System}:: .
 
+[[INS]]
+{Inertial navigation system}:: module consisting of a dual-antenna GNSS and an IMU , which are pre-fused to obtain a high frequency pose, velocity, and accelerations.
+
+[[IMU]]
+{Inertial measurement unit (IMU)}:: an electronic device that measures vehicle's specific force, angular rate, and orientation
+
+[[GNSS]]
+{Global Navigation Satellite System (GNSS)}:: High precision satellite-based positioning receiver.
+
+[[Lidar]]
+{Lidar}:: a sensor that uses infrared laser light to image surrounding objects
+
+[[Radar]]
+{Radar}:: a sensor that detrrmines the presence and location of surrounding objects by measuring the time for the echo of a radio wave to return from them and the direction from which it returns.
 
 === E.2 Components
 
