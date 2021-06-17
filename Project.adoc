@@ -18,11 +18,15 @@
 //----------------------------------------------
 
 === P.2 Personnel characteristics and constraints
+
 The project team includes team principal and three systems engineers 100% dedicated to the project. The requirements analysis, software development and testing is performed by the engineers responsible for the specific software modules. Also there are 4 team members that dedicate 25%-50% their time to the project. Due to the pandemics, currently the team members work from different locations and collaborate remotely.
+
 The team is planning to recruit a verification expert to ensure the correctness and safety of the developed software.
 
 === P.3 Imposed technical choices
+
 - The team aims to licence and sell the produced software to the open-source software should not be used.
+
 - The programming langage choice is limited by the hardware interaced with the system.
 
 === P.4 Schedule, milestones, and deliverables
@@ -32,44 +36,71 @@ Project milestones correspond to the Roborace championship events. The schedule 
 === P.5 Description of individual steps and tasks
 
 Mission 2 on 11-12 of Dec.
+
 1. Mission 2 has 2 rounds: 3&4
+
 2. Each round is a 5 lap race with a mixed reality loot and obstacles
+
 3. Teams get +5 sec for any obstacle object that is struck
+
 4. Teams get -1 sec for any loot that is collected
+
 5. Objects are to be revealed at least 200 m from the car
 
 Mission 3 on 13-14 of Feb.
+
 1. Mission 3 has 2 rounds: 5&6
+
 2. Each round is a 5 lap race with a mixed reality loot and obstacles
+
 3. Teams get +30 sec for any obstacle object that is struck
+
 4. Teams get -2 sec for any loot that is collected
+
 5. Objects are to be revealed at least 200 m from the car
+
 
 Mission 3.1 will take place on April, 6-7
 
 Key extract:
+
 1. Mission 3.1 has 2 rounds: 7&8
+
 2. Each round is a 5 lap race with a mixed reality loot and obstacles
+
 3. Teams have a 20-minute session and 2 attempts in each round to finish the race
+
 4. Teams get +30 sec for any obstacle object that is struck
+
 5. Teams get -2 sec for any loot that is collected
+
 6. Dynamic obstacles are moving at a fixed velocity between 10 and 100 kph
+
 7. Objects are to be revealed at least 150 m from the car
 
 
 Mission 4 will take place on April, 20-2
 
 Key extract:
+
 1. Mission 4 includes 2 racing days called Rounds: 9 & 10
+
 2. Each Round is a 5 lap race with Mixed Reality Gizmos
+
 3. Every time the DevBot hits the a Gizmo it receives a penalty or a reward to the result time
+
 4. Each Team has a 20-minute session and 2 attempts in each Round to finish the race
 
 Penalties & Rewards:
+
 1. +30 sec for any obstacle that is struck
+
 2. -2 sec for any loot that is collected
+
 3. -20 sec for every ghost car that is overtaken
+
 4. +30 sec for every ghost car hit
+
 5. Gizmos reveal at least 150 m from the DevBot
 
 
@@ -89,4 +120,5 @@ Penalties & Rewards:
 //----------------------------------------------
 
 === P.7 Requirements process and report
+
 The project utilizes the PEGS approach to requirements. Requirements are developed incrementally and allocated to one of the four books. During the implementation phase whenever change or refinement of the requirements is detected, it should be carefully documented and confirmed with the stakeholders.
