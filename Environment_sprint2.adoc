@@ -72,6 +72,9 @@ The new terms enrich the glossary as soon as they appear in requirements specifi
 [[Radar]]
 {Radar}:: a sensor that detrrmines the presence and location of surrounding objects by measuring the time for the echo of a radio wave to return from them and the direction from which it returns.
 
+[[OSS]]
+{Optical Speed Sensor (OSS)}:: a sensor that provides direct longitudinal and lateral speed measurements, which are not affected by wheel drift.
+
 === E.2 Components
 
 Racetrack:: 
