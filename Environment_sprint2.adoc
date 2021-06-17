@@ -282,38 +282,73 @@ feature
   -- The set of sensors corresponds to racecar specification
 	lidar1: LIDAR
 	lidar2: LIDAR
+	lidar3: LIDAR
+	lidar4: LIDAR
 	radar1: RADAR
 	radar2: RADAR
-	gnss: GNSS
+	ins: INS
 	camera1: CAMERA
 	camera2: CAMERA
-	odometer: ODOMETER
+	oss: OSS
 
 end
 ----
 
 === E.3 Constraints
 
-Constraints turn into class invariant as these are the conditions that must hold at all times
+There should be at least one requirement that covers each constraint. For the given constraints the following requirements are derived:
 
-[BR] A car starts a race positioned at the starting grid of the racetrack.
+C1. A car starts a race positioned at the starting grid of the racetrack. (business rule)
 
-[BR] If there is no wheel slipping, a car is moving towards its heading direction
+C2. A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/0C2. 3/21] (engineering decision)
 
-[BR] A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/03/21]
+C3. A car shall not drive on the curbs [source: interview with Ilya 09/03/21] (business rule)
 
-[BR] A car shall not drive on the curbs [source: interview with Ilya 09/03/21]
+C4. A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21] (business rule)
 
-[BR] A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21]
+C1 goes to a precondition of a race scenario: When the car starts the race, it should be located at de designated position of a starting grid. Note, that in order to express this in a programming language, the notion "located" should be difined more precisely. Here we mean that the centre of a front side of the car's bounding box should be located withing a specified margin from the relevant starting grid position.
 
-[BR] The coordinates of obstacles and bonuses are sent in real time during the race  [how much ahead?] [source: interview with Ilya 09/03/21]
+C2 goes to the preconditions of the accelerate and brake operations:
+[source, eiffel]
+----
+feature
+	is_braking: BOOLEAN
+		deferred
+		end
+		
+	is_accelerating: BOOLEAN
+		deferred
+		end
+		
+	acceleratee (a: REAL)
+		require
+			is_braking = False
+			a /= 0
+		deferred
+		ensure is_accelerating = True
+		end
+
+	brake (b: REAL)
+		require
+			is_accelerating = False
+			b > 0
+		deferred
+		ensure is_braking = True
+		end
+----
+
+C3 is expressed in a class invariant which says that at all time the car's 4 wheels must stay within the track limits.
+
+C4 turns into the requirements: 
+The system shall support the V2X interface
+When the system receives via V2X a speed limit, it shall adjust the current speed and not exceed the new speed limit till the end of the race or the new speed limit is received.
 
 === E.4 Assumptions
 The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
 
-The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
+The coordinates of obstacles and bonuses are sent by V2X during the race 150m ahead  [source: interview with Ilya 09/03/21]
 
-The robocar and Devbot 2.0 have the same dynamics
+The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
 
 All roborace participants are able to communicate in English
 
@@ -321,15 +356,17 @@ The measured vehicle’s speed equals to actual vehicle’s speed [source: inter
 
 The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy 5-10cm [source: interview with Ilya 09/03/21]
 
-The influence of weather contitions on car dynamics is not taken into consideration and are captured as constraints on car acceleration.
+The influence of weather conditions on car dynamics is not taken into consideration.
 
 The influence of tyre wear-off on car dynamics is not taken into consideration.
 
 The influence of track surface degradation during the race is not taken into consideration.
 
-The racetrack surface is clean and in good conditions
+The racetrack surface is clean and in good conditions.
 
-The racetrack surface is not slippery
+The racetrack surface is not slippery.
+
+If there is no wheel slipping, a car is moving towards its heading direction.
 
 === E.5 Effects
 
@@ -340,6 +377,10 @@ The racetrack surface is not slippery
 
 === E.6 Invariants
 
-In a normal mode the vehicles move within the racetrack limits
+The invariants turn into the class invariants 
+
+In a normal mode all four wheels stay within the racetrack limits
 
 In a normal mode the vehicles move in the racing direction
+
+
