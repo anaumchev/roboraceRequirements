@@ -320,7 +320,7 @@ feature
 		deferred
 		end
 		
-	acceleratee (a: REAL)
+	accelerate (a: REAL)
 		require
 			is_braking = False
 			a /= 0
@@ -337,10 +337,12 @@ feature
 		end
 ----
 
-C3 is expressed in a class invariant which says that at all time the car's 4 wheels must stay within the track limits.
+C3 is expressed in a class invariant which says that at all times the car's 4 wheels must stay within the track limits.
 
 C4 turns into the requirements: 
+
 The system shall support the V2X interface
+
 When the system receives via V2X a speed limit, it shall adjust the current speed and not exceed the new speed limit till the end of the race or the new speed limit is received.
 
 === E.4 Assumptions
