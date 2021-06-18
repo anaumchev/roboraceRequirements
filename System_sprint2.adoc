@@ -1,0 +1,294 @@
+
+== System
+
+=== S.1 List of components
+The software includes the following modules:
+
+. Perception module
+. Mapping and localization
+. Planning	
+. Control
+
+=== S.2 Provided functionality
+
+
+==== S.2.1 Perception module
+
+The module shall detect and localize obstacles and another vehicles
+
+The module shall provide object tracking and path prediction 
+
+==== S.2.2 Mapping and localization module
+
+The system shall perform road segmentation: detect drivable space, road defects 
+
+==== S.2.3 Planning module
+
+The module shall calculate the racing line (path and velocity) for a given track.
+
+The module shall generate local path which takes into account vehicle's current state, obstacles on a road, and converges to a global path when possible.
+
+All four wheels of the vehicle shall stay withing the track limits at all times.
+
+The module shall calculate optimal strategy of avoiding obstacles and collecting bonuses, that depends on the penalties and bonuses for the aforementioned actions. 
+
+When the system receives a safe stop request, the velocity profile of the calculated trajectory shall be updated so that the vehicle stops with a 1 m/s2 deceleration.
+
+When the system receives a safe stop request, the velocity profile of the calculated trajectory shall be updated so that the vehicle stops with an emergency brake deceleration.
+
+
+
+==== S.2.4 Control module
+
+The module shall generate steering, throttle and brake control commands
+
+
+
+=== S.3 Provided interfaces
+
+* Data input from the sensors
+
+* Race control unit
+** obstacles location
+** start command
+** stop command
+** allow to turn on AI driver
+** red and green flags
+** safe stop request
+** emergency stop request
+** speed limit
+
+* Safety module
+
+=== S.4 Example scenarios
+
+
+* Avoid_obstacle_or_stop [stop in front of the obstacle, or if not feasible - pass by]
+* Move_to_the_pitlane [upon request]
+* Race_no_obstacles [demonstrate fastest lap]
+* Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
+* Race_with_dynamic_obstacles
+* Race_with_overtaking
+* Emergency_stop [upon request]
+* Safe_stop [upon request]
+
+=== S.4 Use Cases
+
+//----------------------------------------------
+.Use Case 1. Move to the pitlane
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Move_to_the_pitlane 
+| Scope    | System
+| Level| Business summary
+| Primary actor| Roborace or Racecar pilot
+| Secondary actor| 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar has received an order to move to the pitlane
+
+Racecar is on the racetrack
+
+| Trigger| System receives a request from Racecar pilot or from the Roborace team
+| Main success scenario| * The system calculates the trajectory to the pitlane
+
+* The Racecar follows the trajectory
+
+* The Racecar stops at the pit
+
+| Success guarantee| The Racecar has moved to the pit and stopped
+| Extensions| A. There is no safe trajectory to enter the pitlane (due to obstacles)
+
+* The system calculates the closest possible trajectory to the pitlane entrance
+
+* The Racecar follows the trajectory
+
+* The Racecar stops at the end of the calculated trajectory
+
+B. The distance is not sufficient for dropping the speed enough to  enter the pitlane without using the emergency brake
+
+* The system calculates the trajectory with making an additional race lap before entering the pitlane
+
+* The Racecar follows the trajectory
+
+* The Racecar stops at the pit
+
+| Stakeholders and interests|
+* Racecar Pilot (requests the car to return to pit)
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+
+//----------------------------------------------
+
+.Use Case 2. Single race without obstacles
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Single_race_no_obstacles
+| Scope    | System
+| Level| Business summary
+| Primary actor| Racecar Pilot
+| Secondary actor| 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is placed on a starting grid in a racing direction. 
+
+Racecar is stopped.
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| Racecar operator runs the single racing scenario
+| Main success scenario|  
+
+* The Racecar starts moving following the trajectory
+
+* The system calculates the local trajectory during the race
+
+* The Racecar follows the trajectory
+
+* The Racecar moves the designated number of laps
+
+* After the Racecar finishes the last lap it goes to the pit.
+
+| Success guarantee| The Racecar has finished the race. 
+
+??The Racecar has moved to the pit and stopped.
+
+| Extensions| A. It is not possible to avoid an obstacle
+
+
+
+| Stakeholders and interests|
+* Racecar Pilot 
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+
+//----------------------------------------------
+
+.Use Case 3. Single race in a metaverse
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Single_race_metaverse 
+| Scope    | System
+| Level| Business summary
+| Primary actor| Racecar Pilot
+| Secondary actor| 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is placed on a starting grid in a racing direction. 
+
+Racecar is stopped.
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| Racecar operator runs the single racing scenario
+| Main success scenario|  
+
+* The Racecar starts moving following the trajectory
+
+* The coordinates of the obstacles and bonuses are received from the Roborace in real time when moving
+
+* The system calculates the local trajectory to collect bonuses and avoid obstacles
+
+* The Racecar follows the trajectory
+
+* The Racecar moves the designated number of laps
+
+* After the Racecar finishes the last lap it goes to the pit.
+
+| Success guarantee| The Racecar has finished the race collecting the highest possible number of bonuses and avoiding all obstacles. 
+
+??The Racecar has moved to the pit and stopped.
+
+| Extensions| A. It is not possible to avoid an obstacle
+
+B. It is not possible to collect all visible bonuses
+
+C. To collect a bonus a vehicle has to hit the obstacle
+
+| Stakeholders and interests|
+* Racecar Pilot 
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to return to pit)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+//----------------------------------------------
+
+.Use Case 4. Safe stop
+[cols="2,7",options="header"]
+|===
+|  | 
+//----------------------------------------------
+| Name | Safe_stop
+| Scope    | System
+| Level| Business summary
+| Primary actor| Racecar Pilot or Roborace
+| Secondary actor| 
+| Context of use| Racecar has to obey an instruction
+| Preconditions| Racecar is moving on a racetrack. 
+
+The global trajectory is calculated ahead of the race.
+
+| Trigger| System receives a request from Racecar pilot or from the Roborace team
+| Main success scenario|  
+
+* The Racecar gradually stops following the global trajectory
+
+| Success guarantee| The Racecar has stopped.
+
+| Extensions| 
+
+
+
+| Stakeholders and interests|
+* Racecar Pilot (requests the car to stop)
+
+* Roborace management (sets the race goals and policies)
+
+* Roborace team (requests the car to stop)
+
+* Roborace operations managers (set up and maintain the hardware)
+|===
+//----------------------------------------------
+
+
+
+=== S.5 Prioritization
+At this stage no prioritization is defined.
+
+
+Priority scenario:
+
+* Race_no_obstacles [demonstrate fastest lap]
+
+* Race_in_metaverse [collect bonus obstacles and avoid penalty obstacles]
+
+* Emergency_stop [upon request]
+
+* Safe_stop [upon request]
+
+=== S.6 Verification and acceptance criteria
+At this stage is not defined.
+
+  
