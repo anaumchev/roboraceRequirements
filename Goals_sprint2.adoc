@@ -1,0 +1,109 @@
+//------------------------------------
+// GOALS book
+//
+// Template for requirement:
+//[[gx-keyword]] 
+//`{counter:goals}`
+// Requirement
+
+// {missing} [Corresponding Artifact]
+//------------------------------------
+
+== Goals
+
+=== G.1 Overall context and goals
+Roborace is a global championship between autonomous cars, that allows testing driverless technology in the extreme conditions of competition. The participating teams get access to a racecar called Devbot 2.0 and simulation facilities and have to develop the software to drive a Devbot in racing conditions. The teams are not allowed to modify the hardware.
+
+The Roborace provides facilities for driverless technology development and testing. The Development team aims to use this opportunity to develop software that can be licenced and sold.
+
+The current project focuses on developing the software for Robocar.
+
+=== G.2 Current situation
+The hardware is developed and maintained by Roborace. The vehicle is fully ready for autonomous racing and technical specification is provided to the Development team. Currently the teams are not allowed to make any changes in a car's hardware.
+
+The requirements to the software evolve over the course of the championship. The championship is organise into missions that have a particular set of goals and rules. Each mission is comprised of 2 rounds that take place over one weekend. 
+
+At the current stage the mapping and localization data is provided by the roborace. The racetrack map is provided before the race; the localization data and the location of the appearing orstacle some distance ahead are sent during the race in real time. Currently no physical obstacles are present on the track, yet there are virtual obstacles. The new challenges and tasks will appear later in the championship.
+
+The competing teams have the access to the Devbot only over the racing wweekends. At other times the software is tested using simulators.  
+
+=== G.3 Expected benefits 
+
+Promotion of the Development team as the pioneer of driverless racing.
+
+Revenue from the sales of the developed software.
+
+=== G.4 System overview
+The Devbot 2.0 is a battery electric vehicle with various sensors for perceiving the environment and localizing itself: 5 lidar, 8 ultrasonic, 6 cameras, 1 radar, 1 GPS/IMU, 1 slip-angle sensor [Car Technical Specs]. All the information from the sensors is united in the main ECU, the Nvidia Drive PX2. The Drive PX2 is an Ubuntu 16.04-based ECU with two separate GPUs for high performance computing applications. With this ECU, a platform for deep learning, sensor fusion and surround vision is available for the software developers of Robocar. The software running on the Drive PX2 provides the information for the real time motion controller Speedgoat mobile target machine. This Simulink Real Time-based developer ECU offers real-time computation performance.
+
+In general, it can be said that the software components are splitted into three groups. The first, running on the NVIDIA Drive PX2, consists of data and/or computational intense algorithms. This includes the complete perception and planning parts of the software. In contrast, highly time critical but less complex algorithms, such as Sensor fusion, odometry information collection and vehicle control, are running on the Speedgoat Real-Time ECU. It allows time consistent execution with high frequencies which is necessary for robust control performance during fast driving. Offline software is used to generate a map of a race track and create a time- and energy- optimal raceline based on lidar and GPS data collected on a racetrack before the race.
+
+
+
+=== G.5 Limitations and exclusions 
+
+
+//----------------------------------------------
+.SWOT analysis
+[cols="2,2",,]
+|===
+| *Strengths* | *Opportunities* 
+//----------------------------------------------
+| Team’s experience in driverless vehicles software research | Develop driverless vehicle software without a need to develop and maintain hardware 
+|  |Promote SIT as Roborace attracts public attention
+| *Weaknesses* | *Threats*
+|  |Dependance on Roborace as they define the race goals and provide testing facilities
+|  |Traveling restrictions due to Coronavirus outbreak, resulting in remote collaboration within the team
+|=== 
+//----------------------------------------------
+
+Risks:
+
+* Missing data regarding vehicle’s pose
+* Losing vehicle’s control
+* Collision with another vehicle
+* Collision with an obstacle
+* Driving off the track (all 4 wheels outside of the track)
+* Driving off the track partially (3 or less wheels outside of the track)
+
+
+Risk consequences:
+
+* Not finishing the race
+* Light damage of the ego vehicle
+* Severe damage of the ego vehicle
+* Severe damage of another robocar
+
+=== G.6 Stakeholders
+
+Here is a non-exhaustive list of the stakeholders.
+
+//----------------------------------------------
+.Target side stakeholders
+[cols="1,1,3",,options="header"]
+|===
+| Stakeholder | Category | Comment 
+//----------------------------------------------
+| AV operators | User | 
+|  | Subject-Matter Expert | 
+| SIT Legal department | Legal | Intellectual property issues should be addressed|  | Subject-Matter Expert | 
+| Project Manager  | Decision maker | 
+| SIT Roborace project team | Testers, Documenters, Developers | 
+|  | Trainers | For now there are no trainers, but potentially training will be required for the new system’s users
+| Roborace management |  | As the people who “set the rules of the game”: racing goals and conditions; access to the testing facilities; information disclosure rules
+| Roborace system engineers |  | As the people responsible for the hardware
+|  |  | 
+
+|=== 
+//----------------------------------------------
+
+=== G.7 Requirements sources
+
+The list of requirements sources is stored in the project's repository. As some of them are internal documents, we provide only the exerpt.
+
+* Articles in the field of autonomous driving, and in particular those that refer to the Roborace championship
+* News articles, press releases related to the Roborace
+* Books on autonomous driving
+* Regulatory documents on autonomous driving (for example, ISO/PAS 21448:2019 Road vehicles — Safety of the intended functionality)
+* Hardware specification documents
+* Project stakeholders
