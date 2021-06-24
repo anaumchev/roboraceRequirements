@@ -362,43 +362,43 @@ When the system receives via V2X a speed limit, it shall adjust the current spee
 The assumptions are not turned into code. Yet any new assumption must be listed in this section and further confirmed with the project stakeholders.
 
 
-The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
+A1. The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
 
-The coordinates of obstacles and bonuses are sent by V2X during the race 150m ahead  [source: interview with Ilya 09/03/21]
+A2. The coordinates of obstacles and bonuses are sent by V2X during the race 150m ahead  [source: interview with Ilya 09/03/21]
 
-The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
+A3. The track 2d-map is provided before the race [source: interview with Ilya 09/03/21]
 
-All roborace participants are able to communicate in English
+A4. All roborace participants are able to communicate in English
 
-The measured vehicle’s speed equals to actual vehicle’s speed [source: interview with Ilya 09/03/21]
+A5. The measured vehicle’s speed equals to actual vehicle’s speed [source: interview with Ilya 09/03/21]
 
-The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy 5-10cm [source: interview with Ilya 09/03/21]
+A6. The estimated vehicle’s pose equals to actual vehicle’s pose with an accuracy 5-10cm [source: interview with Ilya 09/03/21]
 
-The influence of weather conditions on car dynamics is not taken into consideration.
+A7. The influence of weather conditions on car dynamics is not taken into consideration.
 
-The influence of tyre wear-off on car dynamics is not taken into consideration.
+A8. The influence of tyre wear-off on car dynamics is not taken into consideration.
 
-The influence of track surface degradation during the race is not taken into consideration.
+A9. The influence of track surface degradation during the race is not taken into consideration.
 
-The racetrack surface is clean and in good conditions.
+A10. The racetrack surface is clean and in good conditions.
 
-The racetrack surface is not slippery.
+A11. The racetrack surface is not slippery.
 
-If there is no wheel slipping, a car is moving towards its heading direction.
+A12. If there is no wheel slipping, a car is moving towards its heading direction.
 
 === E.5 Effects
 
 * As the Roborace is initially created as a self-driving cars competition, the software implementation should not have any effects on the environment
 * Currently the software is checked by the Roborace team before each competition. When the system is fully implemented, this process might change.
-* The implementation of fully autonomous racing vehicles will lead to a redesign of the racing championship, as the racers' personalities play an important role in it. These changes are out of scope of the RMPS project.
+* The implementation of fully autonomous racing vehicles will lead to a redesign of the racing championship, as the racers' personalities play an important role in it. These changes are out of scope of the project.
 
 
 === E.6 Invariants
 
 The invariants turn into the class invariants 
 
-In a normal mode all four wheels stay within the racetrack limits
+E1. In a normal mode all four wheels stay within the racetrack limits
 
-In a normal mode the vehicles move in the racing direction
+E2. In a normal mode the vehicles move in the racing direction
 
 
