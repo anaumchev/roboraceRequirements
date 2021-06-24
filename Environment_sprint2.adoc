@@ -279,19 +279,29 @@ deferred class
 	SENSORS
 
 feature
-  -- The set of sensors corresponds to racecar specification
-	lidar1: LIDAR
-	lidar2: LIDAR
-	lidar3: LIDAR
-	lidar4: LIDAR
-	radar1: RADAR
-	radar2: RADAR
+
+		-- The sensors are to be updated according to the racecar specification
+
+	lidars: ARRAY [LIDAR]
+		--Set of lidars
+
+	radars: ARRAY [RADAR]
+		--Set of radars
+
+	cameras: ARRAY [CAMERA]
+		--Set of cameras
+
+	sonars: ARRAY [SONAR]
+		--Set of sonars
+
 	ins: INS
-	camera1: CAMERA
-	camera2: CAMERA
+		--Inertial navigation system (GNSS and IMU)
+
 	oss: OSS
+		--Output Speed Sensor
 
 end
+
 ----
 
 === E.3 Constraints
@@ -300,13 +310,9 @@ There should be at least one requirement that covers each constraint. For the gi
 
 C1. A car starts a race positioned at the starting grid of the racetrack. (business rule)
 
-C2. A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/0C2. 3/21] (engineering decision)
-
-C3. A car shall not drive on the curbs [source: interview with Ilya 09/03/21] (business rule)
-
-C4. A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21] (business rule)
-
 C1 goes to a precondition of a race scenario: When the car starts the race, it should be located at de designated position of a starting grid. Note, that in order to express this in a programming language, the notion "located" should be difined more precisely. Here we mean that the centre of a front side of the car's bounding box should be located withing a specified margin from the relevant starting grid position.
+
+C2. A car shall not accelerate and brake at the same moment [source: interview with Ilya 09/0C2. 3/21] (engineering decision)
 
 C2 goes to the preconditions of the accelerate and brake operations:
 [source, eiffel]
@@ -322,22 +328,26 @@ feature
 		
 	accelerate (a: REAL)
 		require
-			is_braking = False
+			not is_braking
 			a /= 0
 		deferred
-		ensure is_accelerating = True
+		ensure is_accelerating
 		end
 
 	brake (b: REAL)
 		require
-			is_accelerating = False
+			not is_accelerating
 			b > 0
 		deferred
-		ensure is_braking = True
+		ensure is_braking
 		end
 ----
 
+C3. A car shall not drive on the curbs [source: interview with Ilya 09/03/21] (business rule)
+
 C3 is expressed in a class invariant which says that at all times the car's 4 wheels must stay within the track limits.
+
+C4. A car may receive a speed limit during the race and shall react accordingly [source: interview with Ilya 09/03/21] (business rule)
 
 C4 turns into the requirements: 
 
@@ -346,6 +356,12 @@ The system shall support the V2X interface
 When the system receives via V2X a speed limit, it shall adjust the current speed and not exceed the new speed limit till the end of the race or the new speed limit is received.
 
 === E.4 Assumptions
+
+[TIP]
+
+The assumptions are not turned into code. Yet any new assumption must be listed in this section and further confirmed with the project stakeholders.
+
+
 The localization data is provided during the race in real time [source: interview with Ilya 09/03/21]
 
 The coordinates of obstacles and bonuses are sent by V2X during the race 150m ahead  [source: interview with Ilya 09/03/21]
