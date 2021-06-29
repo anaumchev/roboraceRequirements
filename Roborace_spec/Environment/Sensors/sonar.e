@@ -7,4 +7,7 @@ note
 deferred class
 	SONAR
 
+inherit
+	SENSOR
+
 end

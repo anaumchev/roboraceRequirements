@@ -157,6 +157,29 @@ feature
 	unsurmountable_obstacle_detected: BOOLEAN
 		--The obstacle that does not let follow the glodal trajectory is detected
 
+--Experiment
+feature
+	is_braking: BOOLEAN
+		deferred
+		end
+	is_accelerating: BOOLEAN
+		deferred
+		end
+	acceleratee (a: REAL)
+		require
+			is_braking = False
+			a /= 0
+		deferred
+		ensure is_accelerating = True
+		end
+
+	brake (b: REAL)
+		require
+			is_accelerating = False
+			b > 0
+		deferred
+		ensure is_braking = True
+		end
 invariant
 	-- The vehicle is located within the racetrack boundaries
 	valid_max_angle: max_steering_angle > 0

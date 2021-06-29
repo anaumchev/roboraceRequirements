@@ -2,10 +2,13 @@ note
 	description: "Lidar sensor"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
-	revision: "$07/04/2021$"
+	revision: "$16/06/2021$"
 
 deferred class
 	LIDAR
+
+inherit
+	SENSOR
 
 feature
 	point_cloud: ARRAY2 [LOCATION]
@@ -14,10 +17,7 @@ feature
 	distance: ARRAY2 [REAL]
 		-- m by n matrix of distances to object points
 
-	location: LOCATION
-		-- Lidar location in the world coordinate system
-
 	orientation: ARRAY [ORIENTATION]
-		-- Lidar orientation in the world coordinate system	
+		-- Lidar orientation in the racecar coordinate system	
 
 end

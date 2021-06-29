@@ -7,4 +7,7 @@ note
 deferred class
 	RADAR
 
+inherit
+	SENSOR
+
 end

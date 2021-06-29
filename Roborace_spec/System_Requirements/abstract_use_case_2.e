@@ -7,5 +7,6 @@ note
 deferred class
 	ABSTRACT_USE_CASE_2
 
-
+feature
+	use_case_stories: ARRAYED_LIST[ABSTRACT_USE_CASE_STORY]
 end

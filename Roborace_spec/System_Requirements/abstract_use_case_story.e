@@ -13,7 +13,7 @@ feature
 		end
 
 	postcondition_main: BOOLEAN
-		--True for all use cae stories of the use case
+		--True for all use case stories of the use case
 		deferred
 		end
 

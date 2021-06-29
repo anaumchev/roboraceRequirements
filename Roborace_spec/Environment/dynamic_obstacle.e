@@ -1,5 +1,5 @@
 note
-	description: "Dynamic obtcle on a racetrack"
+	description: "Dynamic obstacle on a racetrack"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
 	revision: "$07/04/2021$"

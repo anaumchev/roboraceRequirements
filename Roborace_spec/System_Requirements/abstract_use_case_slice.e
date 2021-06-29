@@ -11,5 +11,7 @@ feature
 
 	flows: COLLECTION [USE_CASE_STORY]
 
+	estimate: INTEGER
+
 end
 

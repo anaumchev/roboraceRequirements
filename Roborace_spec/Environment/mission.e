@@ -1,13 +1,18 @@
 note
-	description: "Rules of the race"
+	description: "Mission rules and objectives"
 	author: "Maria Naumcheva"
-	date: "$28/04/2021$"
-	revision: "$28/04/2021$"
+	date: "$29/06/2021$"
+	revision: "$29/06/2021$"
+
 
 deferred class
-	RULES
+	MISSION
 
 feature
+
+	racetrack: RACETRACK
+		--racetrack of the race
+
 	num_laps: INTEGER
 		--Number of laps in one attempt
 

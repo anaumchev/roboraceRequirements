@@ -2,15 +2,18 @@ note
 	description: "Camera sensor"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
-	revision: "$07/04/2021$"
+	revision: "$23/06/2021$"
 
 deferred class
 	CAMERA
 
+inherit
+	SENSOR
+
 feature
--- Properties
-	frequency: INTEGER
-		-- Camera frame rate (frames per second)
+--Properties
+	orientation: ARRAY [ORIENTATION]
+		-- Camera orientation in the worlld coordinate system	
 
 -- Output
 	image: ARRAY2 [RGB]
@@ -19,10 +22,5 @@ feature
 	labels: ARRAY2 [INTEGER]
 		-- Label identifier for each pixel in the image
 
-	location: LOCATION
-		-- Camera location in the world coordinate system	
 
-	orientation: ARRAY [ORIENTATION]
-		-- Lidar orientation in the world coordinate system	
-		
 end

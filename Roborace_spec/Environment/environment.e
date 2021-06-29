@@ -3,7 +3,7 @@ note
 	description: "Environment components"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
-	revision: "$07/04/2021$"
+	revision: "$16/06/2021$"
 	EIS: "name=Project Requirement", "protocol=URI", "src=/home/mnaumcheva/Roborace/roboraceRequirements/main.pdf", "tag=requirement", "nameddest=4.1"
 
 deferred class
@@ -11,15 +11,15 @@ deferred class
 
 feature
 	obstacles: BAG[OBSTACLE]
-		-- Set of detected obstacles on racetrack
+		--Set of detected obstacles on racetrack
 
 	roborace: ROBORACE
-		-- Roborace
+		--Race control unit
 
-	racemap: MAP
-		-- Racetrack map
+	race: RACE
+		--Current race details
 
-	racerules: RULES
-		-- Current race rules
+	sensors: SENSORS
+		--Set of sensos insalled of the vehicle
 
 end
