@@ -42,6 +42,8 @@ feature
 
 	is_on_starting_grid: BOOLEAN
 
+	start_command_is_received: BOOLEAN
+
 	location_passed (l: LOCATION) : BOOLEAN
 		do
 
@@ -153,7 +155,10 @@ feature
 
 	--detect_drivable_space:
 		--
-
+	update_speed_limit
+		--Update max_speed according to the received value
+		deferred
+		end
 
 -- Perception
 	unsurmountable_obstacle_detected: BOOLEAN

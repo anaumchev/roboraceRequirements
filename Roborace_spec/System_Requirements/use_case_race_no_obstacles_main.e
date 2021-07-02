@@ -1,8 +1,8 @@
 note
-	description: "Summary description for {USE_CASE_RACE_NO_OBSTACLES_MAIN}."
-	author: ""
-	date: "$Date$"
-	revision: "$Revision$"
+	description: "Use case RACE_NO_OBSTACLES_MAIN implementation"
+	author: "Maria Naumcheva"
+	date: "$02/07/2021$"
+	revision: "$02/07/2021$"
 
 deferred class
 	USE_CASE_RACE_NO_OBSTACLES_MAIN
@@ -17,6 +17,11 @@ feature
 
 	car: RACECAR
 
+    trigger: BOOLEAN
+        do
+            Result := car.start_command_is_received
+        end
+
 	precondition: BOOLEAN
 		do
 			Result := (not race.is_moving) and race.global_plan_is_calculated and race.green_flag_is_shown and car.is_on_starting_grid
@@ -28,10 +33,13 @@ feature
 		end
 
 	main_flow
-		note
+		Note
 			Callers: car_operator
+		require else
+			trigger
 		do
 			from
+
 			until
 				race.race_is_finished
 			loop
@@ -43,5 +51,6 @@ feature
 
 invariant
 	car.is_on_racetrack
+	race.green_flag_is_shown
 
 end
