@@ -12,7 +12,7 @@ feature
 
 	adjust_speed_limit (v : REAL)
 		require
-			yellow_flag_shown or green_flag_shown
+			yellow_flag_is_shown or green_flag_is_shown
 			v > 0
 		deferred
 		ensure
@@ -21,7 +21,7 @@ feature
 
 	recalculate_global_plan
 		require
-			obstacle_detected or safety_hazard
+			obstacle_is_detected or there_is_safety_hazard
 		deferred
 		ensure
 			global_plan_is_calculated
@@ -44,7 +44,7 @@ feature
 
 	safe_stop
 		require
-			race_finished
+			race_is_finished
 		deferred
 		ensure
 			not is_moving
@@ -52,19 +52,17 @@ feature
 
 	emergency_stop
 		require
-			red_flag_shown or safety_hazard
+			red_flag_is_shown or there_is_safety_hazard
 		deferred
 		ensure
 			not is_moving
 		end
 
-	local_plan_is_calculated, global_plan_is_calculated, obstacle_detected, race_finished,
-	is_moving, red_flag_shown,yellow_flag_shown, green_flag_shown, safety_hazard : BOOLEAN
+	local_plan_is_calculated, global_plan_is_calculated, obstacle_is_detected, race_is_finished,
+	is_moving, red_flag_is_shown,yellow_flag_is_shown, green_flag_is_shown, there_is_safety_hazard : BOOLEAN
 
 invariant
-	red_flag_shown implies not (yellow_flag_shown or green_flag_shown)
-	yellow_flag_shown implies not (red_flag_shown or green_flag_shown)
-	green_flag_shown implies not (yellow_flag_shown or red_flag_shown)
+	red_flag_is_shown xor yellow_flag_is_shown xor green_flag_is_shown
 	local_plan_is_calculated implies global_plan_is_calculated
 
 end

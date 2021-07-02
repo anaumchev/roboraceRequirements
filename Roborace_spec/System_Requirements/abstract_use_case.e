@@ -28,7 +28,7 @@ feature {PRIMARY_ACTOR}
 
 	main_flow
 		note
-			Callers: racecar operator
+			Callers: racecar_operator
 		require
 			precondition
 		deferred

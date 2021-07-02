@@ -40,6 +40,8 @@ feature
 
 		end
 
+	is_on_starting_grid: BOOLEAN
+
 	location_passed (l: LOCATION) : BOOLEAN
 		do
 

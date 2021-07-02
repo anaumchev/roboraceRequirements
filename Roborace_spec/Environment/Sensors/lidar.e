@@ -14,7 +14,7 @@ feature
 	point_cloud: ARRAY2 [LOCATION]
 		-- m by n matrix of detected points in lidar coordinate system
 
-	distance: ARRAY2 [REAL]
+	object_points_distance: ARRAY2 [REAL]
 		-- m by n matrix of distances to object points
 
 	orientation: ORIENTATION
