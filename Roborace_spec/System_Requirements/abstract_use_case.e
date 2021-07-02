@@ -28,13 +28,13 @@ feature {PRIMARY_ACTOR}
 
 	main_flow
 		note
-			Callers: roborace, pilot
+			Callers: racecar operator
 		require
 			precondition
 		deferred
 		ensure
 			postcondition
-			
+
 		end
 
 invariant

@@ -12,8 +12,8 @@ inherit
 
 feature
 --Properties
-	orientation: ARRAY [ORIENTATION]
-		-- Camera orientation in the worlld coordinate system	
+	orientation: ORIENTATION
+		-- Camera orientation in the world coordinate system	
 
 -- Output
 	image: ARRAY2 [RGB]

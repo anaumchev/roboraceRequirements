@@ -17,7 +17,7 @@ feature
 	distance: ARRAY2 [REAL]
 		-- m by n matrix of distances to object points
 
-	orientation: ARRAY [ORIENTATION]
-		-- Lidar orientation in the racecar coordinate system	
+	orientation: ORIENTATION
+		-- Lidar orientation in the world coordinates of the scene	
 
 end

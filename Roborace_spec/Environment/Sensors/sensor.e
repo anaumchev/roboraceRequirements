@@ -9,7 +9,7 @@ deferred class
 
 feature
 	position: LOCATION_3D
-		--location in the racecar coordinate system
+		--location in the world coordinates of the scene
 
 	update_rate: REAL
 		--sensor update rate
