@@ -1,0 +1,92 @@
+@startuml
+
+'-----------------------------------
+' UML class diagram of the ROBORACE
+' JMB 2021
+'-----------------------------------
+
+' Default settings
+'-----------------------------------
+' left to right direction 'does not work for sequence diagrams :-(
+hide circle
+hide empty members
+hide methods	
+
+' Colors & Fonts
+'-----------------------------------
+'Colors => see http://plantuml.com/color
+'skinparam monochrome true
+'skinparam monochrome reverse
+'skinparam handwritten true
+skinparam package {
+	BackgroundColor empty
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName TrebuchetMS
+}
+skinparam roundcorner 10
+
+skinparam class {
+	BackgroundColor AliceBlue
+	BorderColor DarkSlateGray
+	ArrowColor Black
+	FontColor Black
+	FontSize 12
+	FontName TrebuchetMS
+}
+skinparam arrow {
+    MessageAlign center
+}
+'-----------------------------------
+'-----------------------------------
+
+title Roborace Domain Model
+
+package Concrete_Environment {
+
+abstract class r as "RACETRACK"
+
+class s as "SENSOR" {
+    location
+    update_rate
+}
+
+class LIDAR {
+    point_cloud 
+    distance  
+    orientation
+}
+s <|-- LIDAR
+s <|-- RADAR
+s <|-- CAMERA
+
+}
+
+package Abstract_Environment {
+
+class loc as "LOCATION"
+class map as "MAP"
+class m as "MISSION" {
+    num_laps
+    num_attempts
+}
+
+r -> "1" map : bouding lines
+r -> "2" loc : "starting line"
+r -> "*" loc : starting grid
+
+m -> "1" r
+
+}
+
+package Scenarios {
+
+class sc1 as "RACE_NO_OBSTACLES"
+class sc2 as "MOVE_TO_PIT"
+}
+
+m -[hidden]- sc1
+
+@enduml
