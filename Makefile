@@ -24,4 +24,4 @@ clean:
 deploy: index.html
 	@echo "========================================"
 	@echo "==> Deploy updates "
-	git commit -am "🤖 DEPLOY: last updates"; git pull; git push
+	git pull; git commit -am "🤖 DEPLOY: last updates"; git pull; git push
