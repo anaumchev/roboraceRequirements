@@ -13,8 +13,6 @@ inherit
 
 feature
 
-	race: RACE
-
 	car: RACECAR
 
     trigger: BOOLEAN
@@ -24,12 +22,15 @@ feature
 
 	precondition: BOOLEAN
 		do
-			Result := (not race.is_moving) and race.global_plan_is_calculated and race.green_flag_is_shown and car.is_on_starting_grid
+			Result := not car.is_moving
+					  and car.global_plan_is_calculated
+					  and car.green_flag_is_shown
+					  and car.is_on_starting_grid
 		end
 
 	postcondition: BOOLEAN
 		do
-			Result := not race.is_moving and race.race_is_finished
+			Result := not car.is_moving and car.race_is_finished
 		end
 
 	main_flow
@@ -41,29 +42,29 @@ feature
 			from
 
 			until
-				race.race_is_finished
+				car.race_is_finished
 			loop
 				car.planning_module.calculate_local_path
-				car.move
+				car.control_module.move
 			end
-			race.safe_stop
+			car.control_module.safe_stop
 		end
 
 	alternative_flow1
 		--There is an obstacle on a racetrack
 		require
-			race.is_moving
-			race.obstacle_is_detected
+			car.is_moving
+			car.obstacle_is_detected
 		do
-			race.recalculate_global_plan
+			car.planning_module.recalculate_global_plan
 			from
 			until
-				race.race_is_finished
+				car.race_is_finished
 			loop
 				car.planning_module.calculate_local_path
-				car.move
+				car.control_module.move
 			end
-			race.safe_stop
+			car.control_module.safe_stop
 		ensure
 			postcondition
 		end
@@ -71,29 +72,29 @@ feature
 	alternative_flow2
 		--The red flag received during the race
 		require
-			race.is_moving
-			race.red_flag_is_shown
+			car.is_moving
+			car.red_flag_is_shown
 		do
-			race.recalculate_global_plan
-			race.emergency_stop
+			car.planning_module.recalculate_global_plan
+			car.control_module.emergency_stop
 		ensure
-			not race.is_moving
+			not car.is_moving
 		end
 
-	alternative_flow3
+	alternative_flow3 (v: REAL)
 		--The yellow flag is received during the race
 		require
-			race.yellow_flag_is_shown
+			car.yellow_flag_is_shown (v)
 		do
-			car.update_speed_limit
+			car.planning_module.adjust_speed_limit (v)
 			from
 			until
-				race.race_is_finished
+				car.race_is_finished
 			loop
 				car.planning_module.calculate_local_path
-				car.move
+				car.control_module.move
 			end
-			race.safe_stop
+			car.control_module.safe_stop
 		ensure
 			postcondition
 		end
@@ -101,13 +102,13 @@ feature
 	alternative_flow4
 		--The difference between the calculated and real location is more than a given threshold.
 		require
-			race.there_is_safety_hazard
-			race.is_moving
+			car.there_is_safety_hazard
+			car.is_moving
 		do
-			race.recalculate_global_plan
-			race.emergency_stop
+			car.planning_module.recalculate_global_plan
+			car.control_module.emergency_stop
 		ensure
-			not race.is_moving
+			not car.is_moving
 		end
 
 invariant

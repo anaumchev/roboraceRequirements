@@ -9,14 +9,18 @@ deferred class
 
 feature
 	control_module: CONTROL_MODULE
-	percepion_module: PERCEPTION_MODULE
+	perception_module: PERCEPTION_MODULE
 	planning_module: PLANNING_MODULE
 	localization_and_mapping_module: LOCALIZATION_AND_MAPPING_MODULE
 
 feature
 
 	local_plan_is_calculated, global_plan_is_calculated, obstacle_is_detected, race_is_finished,
-	is_moving, red_flag_is_shown,yellow_flag_is_shown, green_flag_is_shown, there_is_safety_hazard : BOOLEAN
+	is_moving, red_flag_is_shown, green_flag_is_shown, there_is_safety_hazard : BOOLEAN
+
+	yellow_flag_is_shown (speedlimit : REAL) : BOOLEAN
+	deferred
+	end
 
 feature
 
@@ -201,5 +205,6 @@ invariant
 	-- The vehicle is located within the racetrack boundaries
 	valid_max_angle: max_steering_angle > 0
 	valid_speed: speed < max_speed
+	red_flag_is_shown xor yellow_flag_is_shown (max_speed) xor green_flag_is_shown
 
 end

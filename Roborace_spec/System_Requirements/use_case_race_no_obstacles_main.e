@@ -13,7 +13,7 @@ inherit
 
 feature
 
-	race: RACE
+	mission: MISSION
 
 	car: RACECAR
 
@@ -24,12 +24,12 @@ feature
 
 	precondition: BOOLEAN
 		do
-			Result := (not race.is_moving) and race.global_plan_is_calculated and race.green_flag_is_shown and car.is_on_starting_grid
+			Result := (not car.is_moving) and car.global_plan_is_calculated and car.green_flag_is_shown and car.is_on_starting_grid
 		end
 
 	postcondition: BOOLEAN
 		do
-			Result := not race.is_moving
+			Result := not car.is_moving
 		end
 
 	main_flow
@@ -41,16 +41,16 @@ feature
 			from
 
 			until
-				race.race_is_finished
+				car.race_is_finished
 			loop
 				car.planning_module.calculate_local_path
 				car.move
 			end
-			race.safe_stop
+			car.control_module.safe_stop
 		end
 
 invariant
 	car.is_on_racetrack
-	race.green_flag_is_shown
+	car.green_flag_is_shown
 
 end

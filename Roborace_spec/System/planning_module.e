@@ -11,7 +11,7 @@ feature
 	car: RACECAR
 
 feature
-	calculate_race_trajectory (circuit_map: LIST[TUPLE[LOCATION, LOCATION]];
+	calculate_race_trajectory (circuit_map: MAP;
 								vehicle_param: VEHICLE_PARAMETERS; strategy: INTEGER):
 								TUPLE [LOCATION, DOUBLE]
 		-- Calculate optimal racing line for circuit
@@ -48,9 +48,9 @@ feature
 		deferred
 		end
 
-	adjust_speed_limit (v : REAL)
+	adjust_speed_limit (v: REAL)
 		require
-			car.yellow_flag_is_shown or car.green_flag_is_shown
+			car.yellow_flag_is_shown (v) or car.green_flag_is_shown
 			v > 0
 		deferred
 		ensure
