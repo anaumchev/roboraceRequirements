@@ -4,7 +4,10 @@ note
 	date: "$01/06/2021$"
 	revision: "$01/06/2021$"
 
-class
+deferred class
 	PERCEPTION_MODULE
+
+feature
+	car: RACECAR
 
 end

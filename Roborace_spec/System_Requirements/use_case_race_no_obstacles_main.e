@@ -43,7 +43,7 @@ feature
 			until
 				race.race_is_finished
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 			race.safe_stop

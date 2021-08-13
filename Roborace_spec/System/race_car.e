@@ -7,12 +7,13 @@ note
 deferred class
 	RACE_CAR
 
-inherit
-	CONTROL_MODULE
-	PERCEPTION_MODULE
-	PLANNING_MODULE
-	ENVIRONMENT
 
+feature
+	control_module: CONTROL_MODULE
+	percepion_module: PERCEPTION_MODULE
+	planning_module: PLANNING_MODULE
+	localization_and_mapping_module: LOCALIZATION_AND_MAPPING_MODULE
+	
 feature
 	parameters: VEHICLE_PARAMETERS
 

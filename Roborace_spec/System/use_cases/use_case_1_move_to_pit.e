@@ -29,14 +29,14 @@ feature
 			car_on_racetrack: car.is_on_racetrack
 		do
 			from
-				car.calculate_global_path (pit_location, car.normal_speed)
+				car.planning_module.calculate_global_path
 			invariant
 				move_to_pit_trigger_holds
 			until
 				(car.location.equals (pit_location) and car.speed = 0) or alernative_flow_trigger > 0
 			loop
 					--check the system architecture (synchronous/asyncronous)
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 				if car.unsurmountable_obstacle_detected then
 					alernative_flow_trigger := 1
@@ -60,12 +60,12 @@ feature
 			car_on_racetrack: car.is_on_racetrack
 			car.unsurmountable_obstacle_detected
 		do
-			car.calculate_global_path (obstacle.location, car.normal_speed)
+			car.planning_module.calculate_global_path
 			from
 			until
 				car.location.close_to (obstacle) and car.speed = 0
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 		ensure

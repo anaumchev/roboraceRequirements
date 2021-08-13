@@ -2,10 +2,21 @@ note
 	description: "Core system class"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
-	revision: "$21/04/2021$"
+	revision: "$03/07/2021$"
 
 deferred class
 	RACECAR
+
+feature
+	control_module: CONTROL_MODULE
+	percepion_module: PERCEPTION_MODULE
+	planning_module: PLANNING_MODULE
+	localization_and_mapping_module: LOCALIZATION_AND_MAPPING_MODULE
+
+feature
+
+	local_plan_is_calculated, global_plan_is_calculated, obstacle_is_detected, race_is_finished,
+	is_moving, red_flag_is_shown,yellow_flag_is_shown, green_flag_is_shown, there_is_safety_hazard : BOOLEAN
 
 feature
 
@@ -36,9 +47,6 @@ feature
 		-- Racecar local trajectory
 
 	is_on_racetrack: BOOLEAN
-		do
-
-		end
 
 	is_on_starting_grid: BOOLEAN
 
@@ -112,6 +120,8 @@ feature
 
 	move
 		--move along the calculated path and velocity
+		require
+
 		do
 
 		end
@@ -125,24 +135,24 @@ feature
 			-- Raceline is within the track boundaries
 		end
 
-	calculate_global_path (target : LOCATION; speedlimit: REAL)
-		require
-			valid_speed: speedlimit <= max_speed
-			positive_speed: speedlimit > 0
-		do
-
-		ensure
+--	calculate_global_path (target : LOCATION; speedlimit: REAL)
+--		require
+--			valid_speed: speedlimit <= max_speed
+--			positive_speed: speedlimit > 0
+--		do
+--
+--		ensure
 			-- The last point of the path equals to a destionation point
 			-- At every point the speed is less than the limit
 			-- Raceline is within the track boundaries
-		end
-
-	calculate_local_path
-		do
-
-		ensure
-			-- Global and local paths converge
-		end
+--		end
+--
+--	calculate_local_path
+--		do
+--
+--		ensure
+--			-- Global and local paths converge
+--		end
 
 -- Localization and mapping
 
@@ -190,5 +200,6 @@ feature
 invariant
 	-- The vehicle is located within the racetrack boundaries
 	valid_max_angle: max_steering_angle > 0
+	valid_speed: speed < max_speed
 
 end

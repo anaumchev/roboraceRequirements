@@ -43,7 +43,7 @@ feature
 			until
 				race.race_is_finished
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 			race.safe_stop
@@ -60,7 +60,7 @@ feature
 			until
 				race.race_is_finished
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 			race.safe_stop
@@ -90,7 +90,7 @@ feature
 			until
 				race.race_is_finished
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 			race.safe_stop
@@ -109,7 +109,7 @@ feature
 		ensure
 			not race.is_moving
 		end
-		
+
 invariant
 	car.is_on_racetrack
 

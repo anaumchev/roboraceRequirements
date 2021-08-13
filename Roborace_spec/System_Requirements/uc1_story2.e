@@ -35,11 +35,11 @@ feature
 	flow
 		do
 			from
-				car.calculate_global_path (obstacle.location, car.normal_speed)
+				car.planning_module.calculate_global_path
 			until
 				postcondition
 			loop
-				car.calculate_local_path
+				car.planning_module.calculate_local_path
 				car.move
 			end
 		end
