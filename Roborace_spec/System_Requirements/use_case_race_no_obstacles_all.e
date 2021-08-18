@@ -48,7 +48,8 @@ feature
 			trigger
 		do
 			from
-
+			invariant
+				loop_invariant
 			until
 				car.race_is_finished
 			loop
