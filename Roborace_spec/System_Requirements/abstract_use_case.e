@@ -13,7 +13,7 @@ feature
 		deferred
 		end
 
-	postcondition_main: BOOLEAN
+	postcondition_alternative: BOOLEAN
 		deferred
 		end
 

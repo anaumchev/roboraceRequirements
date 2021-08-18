@@ -8,11 +8,9 @@ deferred class
 	USE_CASE_RACE_NO_OBSTACLES_ALL
 
 inherit
-
 	ABSTRACT_USE_CASE
 
 feature
-
 	car: RACECAR
 
     trigger: BOOLEAN
@@ -30,7 +28,12 @@ feature
 
 	postcondition: BOOLEAN
 		do
-			Result := not car.is_moving and car.race_is_finished
+			Result := postcondition_alternative and car.race_is_finished
+		end
+
+	postcondition_alternative: BOOLEAN
+		do
+			Result := not car.is_moving
 		end
 
 	loop_invariant: BOOLEAN
@@ -85,7 +88,7 @@ feature
 			car.planning_module.recalculate_global_plan
 			car.control_module.emergency_stop
 		ensure
-			not car.is_moving
+			postcondition_alternative
 		end
 
 	alternative_flow3 (v: REAL)
@@ -118,9 +121,7 @@ feature
 			car.planning_module.recalculate_global_plan
 			car.control_module.emergency_stop
 		ensure
-			not car.is_moving
+			postcondition_alternative
 		end
-
-
 
 end
