@@ -2,7 +2,7 @@ note
 	description: "Use case RACE_NO_OBSTACLES_ALL implementation"
 	author: "Maria Naumcheva"
 	date: "$02/07/2021$"
-	revision: "$02/07/2021$"
+	revision: "$18/08/2021$"
 
 deferred class
 	USE_CASE_RACE_NO_OBSTACLES_ALL
@@ -33,6 +33,11 @@ feature
 			Result := not car.is_moving and car.race_is_finished
 		end
 
+	loop_invariant: BOOLEAN
+		do
+			Result := car.is_on_racetrack
+		end
+
 	main_flow
 		Note
 			Callers: car_operator
@@ -58,6 +63,8 @@ feature
 		do
 			car.planning_module.recalculate_global_plan
 			from
+			invariant
+				loop_invariant
 			until
 				car.race_is_finished
 			loop
@@ -84,10 +91,13 @@ feature
 	alternative_flow3 (v: REAL)
 		--The yellow flag is received during the race
 		require
+			car.is_moving
 			car.yellow_flag_is_shown (v)
 		do
 			car.planning_module.adjust_speed_limit (v)
 			from
+			invariant
+				loop_invariant
 			until
 				car.race_is_finished
 			loop
@@ -111,7 +121,6 @@ feature
 			not car.is_moving
 		end
 
-invariant
-	car.is_on_racetrack
+
 
 end
