@@ -2,7 +2,7 @@ note
 	description: "Core system class"
 	author: "Maria Naumcheva"
 	date: "$07/04/2021$"
-	revision: "$03/07/2021$"
+	revision: "$17/08/2021$"
 
 deferred class
 	RACECAR
@@ -16,7 +16,12 @@ feature
 feature
 
 	local_plan_is_calculated, global_plan_is_calculated, obstacle_is_detected, race_is_finished,
-	is_moving, red_flag_is_shown, green_flag_is_shown, there_is_safety_hazard : BOOLEAN
+	is_moving, red_flag_is_shown, green_flag_is_shown, there_is_safety_hazard, safe_stop_request_received : BOOLEAN
+
+	unsurmountable_obstacle_detected: BOOLEAN
+		--The obstacle that does not let follow the glodal trajectory is detected
+
+	is_accelerating, is_braking, raceline_is_calculated: BOOLEAN
 
 	yellow_flag_is_shown (speedlimit : REAL) : BOOLEAN
 	deferred
@@ -30,6 +35,8 @@ feature
 
 	sensors: SENSORS
 		-- Racecar sensors
+
+	mission: MISSION
 
 -- Vehicle current state
 	location: LOCATION
@@ -57,13 +64,20 @@ feature
 	start_command_is_received: BOOLEAN
 
 	location_passed (l: LOCATION) : BOOLEAN
-		do
-
+		deferred
 		end
 
 -- Parameters	
-	max_speed: REAL
+	max_speed: REAL		-- assign set_max_speed
 		-- Speed limit
+
+	set_max_speed (new_max_speed: REAL)
+		-- Update speed limit
+		require
+			new_max_speed >= 0
+		do
+			max_speed := new_max_speed
+		end
 
 	normal_speed: REAL
 		-- Speed limit when moving not in racing mode
@@ -90,121 +104,13 @@ feature
 		-- Acceptable error margin when setting steering angle
 
 	is_valid_acceleration (old_speed: REAL; new_speed: REAL; timeincrement: REAL) : BOOLEAN
-		do
-
-		end
-
--- Vehicle control
-	accelerate (v : REAL)
-		-- Send desired speed command to the actuators
-		require
-			valid_acceleration: (v - speed)/timestep <= max_acceleration
-			valid_deceleration: (v - speed)/timestep >= emergency_deceleration
-		do
-		ensure
-			speed_set: (v - speed) <= speed_error
-		end
-
-	steer (angle : REAL)
-		-- Send desired steering command to the actuators
-		require
-			valid_angle: angle.abs <= max_steering_angle
-		do
-		ensure
-			angle_set: (steering_angle - angle) <= angle_error
-		end
-
-	emergency_brake
-		-- Perform emergency stop				
-		require
-			not_stopped: speed > 0
-		do
-
-		end
-
-	move
-		--move along the calculated path and velocity
-		require
-
-		do
-
-		end
--- Path planning
-	calculate_raceline (racemap: MAP)
-		do
-
-		ensure
-			-- the first element of the raceline equals to the last (the path is a loop)
-			-- At every point the speed is less than the limit
-			-- Raceline is within the track boundaries
-		end
-
---	calculate_global_path (target : LOCATION; speedlimit: REAL)
---		require
---			valid_speed: speedlimit <= max_speed
---			positive_speed: speedlimit > 0
---		do
---
---		ensure
-			-- The last point of the path equals to a destionation point
-			-- At every point the speed is less than the limit
-			-- Raceline is within the track boundaries
---		end
---
---	calculate_local_path
---		do
---
---		ensure
---			-- Global and local paths converge
---		end
-
--- Localization and mapping
-
-	set_location (l: LOCATION)
-		-- Update current location
-		do
-		ensure
-			location_set: location = l
-		end
-
-	--detect_drivable_space:
-		--
-	update_speed_limit
-		--Update max_speed according to the received value
 		deferred
 		end
 
--- Perception
-	unsurmountable_obstacle_detected: BOOLEAN
-		--The obstacle that does not let follow the glodal trajectory is detected
-
---Experiment
-feature
-	is_braking: BOOLEAN
-		deferred
-		end
-	is_accelerating: BOOLEAN
-		deferred
-		end
-	acceleratee (a: REAL)
-		require
-			is_braking = False
-			a /= 0
-		deferred
-		ensure is_accelerating = True
-		end
-
-	brake (b: REAL)
-		require
-			is_accelerating = False
-			b > 0
-		deferred
-		ensure is_braking = True
-		end
 invariant
-	-- The vehicle is located within the racetrack boundaries
 	valid_max_angle: max_steering_angle > 0
 	valid_speed: speed < max_speed
 	red_flag_is_shown xor yellow_flag_is_shown (max_speed) xor green_flag_is_shown
+	is_on_racetrack
 
 end

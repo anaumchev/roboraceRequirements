@@ -44,7 +44,7 @@ feature
 			until
 				car.race_is_finished
 			loop
-				car.planning_module.calculate_local_path
+				car.planning_module.calculate_local_plan
 				car.control_module.move
 			end
 			car.control_module.safe_stop
@@ -61,7 +61,7 @@ feature
 			until
 				car.race_is_finished
 			loop
-				car.planning_module.calculate_local_path
+				car.planning_module.calculate_local_plan
 				car.control_module.move
 			end
 			car.control_module.safe_stop
@@ -91,7 +91,7 @@ feature
 			until
 				car.race_is_finished
 			loop
-				car.planning_module.calculate_local_path
+				car.planning_module.calculate_local_plan
 				car.control_module.move
 			end
 			car.control_module.safe_stop
