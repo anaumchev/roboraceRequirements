@@ -18,7 +18,11 @@ feature {NONE} -- Initialization
 	make
 			-- Run application.
 		do
-			print ("The Roborace Specification")
+			print (({NORMAL_FLOW}).default)
+			io.new_line
+			print (({CAR_ALWAYS_STAYS_ON_TRACK}).default)
+			io.new_line
+--			print ("Hello")
 		end
 
 end
